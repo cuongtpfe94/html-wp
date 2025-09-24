@@ -1,0 +1,109 @@
+@use "../../scss/abstracts/mixins" as *;
+@use "../../scss/abstracts/variables" as *;
+
+.announcement-form {
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+
+  &__header {
+    @include flex-between;
+    padding-bottom: var(--spacing-xl);
+  }
+
+  &__title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__actions {
+    @include flex-center;
+    gap: var(--spacing-sm);
+  }
+
+  &__footer {
+    padding: var(--spacing-lg) 0;
+    text-align: right;
+
+    .button {
+      margin-left: var(--spacing-sm);
+    }
+  }
+
+  &__checkboxes {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .form-checkboxes {
+    height: 40px;
+    margin-top: 0;
+    padding: 0 4px;
+    background: #d6d6d6;
+
+    .checkbox {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .file-upload {
+    position: relative;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    max-width: 220px;
+    padding: 0 var(--spacing-sm);
+    height: 40px;
+    border-radius: 4px;
+    max-width: 300px;
+    background-color: #fff;
+    @include transition(border-color);
+    @include flex-between;
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+
+    ::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      background-color: var(--border-color);
+      right: 50px;
+      top: 0;
+    }
+
+    &__btn {
+      flex-shrink: 0;
+    }
+  }
+
+  .file-input {
+    display: none;
+  }
+
+  .file-upload-label {
+    display: block;
+    cursor: pointer;
+    color: var(--text-secondary);
+    width: 100%;
+  }
+
+  .file-upload-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .dynamic-content {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}

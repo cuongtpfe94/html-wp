@@ -1,0 +1,39 @@
+{% extends "layouts/base.njk" %}
+{% from "components/announcement-form/announcement-form.njk" import announcementForm %}
+
+{# Import components #}
+{# from "components/header/header.njk" import header #}
+{# from "components/footer/footer.njk" import footer #}
+{# from "components/sidebar/sidebar.njk" import sidebar #}
+
+{% block title %}お知らせ作成 - {{ site.title }}{% endblock %}
+
+{% block bodyClass %}admin-layout{% endblock %}
+
+{% block content %}
+  <div class="admin-content">
+    {{ announcementForm(announcementData) }}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Dynamic content switching
+document.getElementById('announcement-type').addEventListener('change', function() {
+  const value = this.value;
+  const contents = document.querySelectorAll('.dynamic-content');
+
+  contents.forEach(content => {
+    content.style.display = 'none';
+  });
+
+  const activeContent = document.getElementById(value + '-content');
+  if (activeContent) {
+    activeContent.style.display = 'block';
+  }
+});
+
+// Initialize with default selection
+document.getElementById('page-link-content').style.display = 'block';
+</script>
+{% endblock %}

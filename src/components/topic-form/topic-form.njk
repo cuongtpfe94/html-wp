@@ -1,0 +1,129 @@
+{# Topic Form Component #}
+{% macro topicForm(data) %}
+  <div class="topic-form app-form">
+    <div class="topic-form__header-container">
+      <div class="topic-form__header">
+        <h1 class="topic-form__title">トピックス投稿</h1>
+        <div class="topic-form__actions">
+          <button class="button button--ghost button--small">
+            <span class="text-default">下書き保存</span>
+          </button>
+          |
+          <button class="button button--ghost button--small">
+            <span class="text-default">プレビュー</span>
+          </button>
+          |
+          <button class="button button--ghost button--small">
+            <span class="text-default">公開</span>
+          </button>
+        </div>
+      </div>
+      {# Add button section #}
+      <button
+        onclick="window.location.href='/announcement-create'"
+        class="app-button app-button--primary app-button--small mt-2"
+        id="new-announcement">
+        <span class="button__icon">+</span>
+        新規トピックスを追加
+      </button>
+    </div>
+    <div
+      class="topic-form__content">
+      {# Topics list #}
+      <div class="topic-form__list" id="topic-list">
+        {% for topic in data.topics %}
+          <div class="topic-form__item" data-topic-id="{{ loop.index }}">
+            <div class="topic-form__handle">
+              <span class="topic-form__handle-icon">≡</span>
+            </div>
+            <div
+              class="topic-form__table">
+              {# Row 1: Title #}
+              <div class="topic-form__row topic-form__row--title">
+                <div class="topic-form__cell topic-form__cell--label">タイトル</div>
+                <div class="topic-form__cell topic-form__cell--input">
+                  <input type="text" class="topic-form__input form-input" placeholder="テキスト入力" value="{{ topic.title }}"></div>
+                </div>
+                {# Row 2: URL #}
+                <div class="topic-form__row topic-form__row--url">
+                  <div class="topic-form__cell topic-form__cell--label">リンク先URL</div>
+                  <div class="topic-form__cell topic-form__cell--input">
+                    <input type="url" class="topic-form__input form-input" placeholder="URLを入力" value="{{ topic.url }}">
+                      <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" checked>
+                          <span class="checkbox-text">別ウィンドウ（別タブ）で開</span>
+                        </label>
+                      </div>
+                    </div>
+                    {# Row 3: Image #}
+                    <div class="topic-form__row topic-form__row--image">
+                      <div class="topic-form__cell topic-form__cell--label">画像</div>
+                      <div class="topic-form__cell topic-form__cell--input">
+                        {% if topic.image %}
+                          <div class="topic-form__image">
+                            <span class="topic-form__image-name">{{ topic.image }}</span>
+                            <button type="button" class="topic-form__image-delete">🗑️</button>
+                          </div>
+                        {% else %}
+                          <div class="topic-form__upload">
+                            <input type="file" class="topic-form__upload-input" accept="image/*">
+                              <div class="topic-form__upload-area">
+                                <span class="topic-form__upload-icon">📁</span>
+                                <span class="topic-form__upload-text">ドラッグ&ドロップ</span>
+                              </div>
+                            </div>
+                          {% endif %}
+                        </div>
+                        <div class="topic-form__cell topic-form__cell--pages justify-content-start">
+                          <label class="checkbox-label">
+                            <input type="checkbox" class="checkbox" checked>
+                              <span class="checkbox-text">トップページ</span>
+                            </label>
+                            <label class="checkbox-label">
+                              <input type="checkbox" class="checkbox" checked>
+                                <span class="checkbox-text">BL部品</span>
+                              </label>
+                              <label class="checkbox-label">
+                                <input type="checkbox" class="checkbox" checked>
+                                  <span class="checkbox-text">試験・評定</span>
+                                </label>
+                                <label class="checkbox-label">
+                                  <input type="checkbox" class="checkbox" checked>
+                                    <span class="checkbox-text">性能評価</span>
+                                  </label>
+                                  <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox" checked>
+                                      <span class="checkbox-text">調査・研究</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="topic-form__cell topic-form__cell--delete">
+                                <button type="button" class="topic-form__delete" title="削除">🗑️</button>
+                              </div>
+                            </div>
+                          {% endfor %}
+                        </div>
+                        {# Pagination #}
+                        <div class="topic-form__pagination">
+                          <span class="topic-form__dot topic-form__dot--active"></span>
+                          <span class="topic-form__dot topic-form__dot--active"></span>
+                          <span class="topic-form__dot topic-form__dot--active"></span>
+                        </div>
+                      </div>
+                      {# Footer #}
+                      <div class="topic-form__footer">
+                        <button class="button button--ghost button--small">
+                          <span class="text-default">下書き保存</span>
+                        </button>
+                        |
+                        <button class="button button--ghost button--small">
+                          <span class="text-default">プレビュー</span>
+                        </button>
+                        |
+                        <button class="button button--ghost button--small">
+                          <span class="text-default">公開</span>
+                        </button>
+                      </div>
+                    </div>
+                  {% endmacro %}

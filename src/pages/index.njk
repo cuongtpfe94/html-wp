@@ -1,0 +1,24 @@
+{% extends "layouts/base.njk" %}
+{% from "components/notification-list/notification-list.njk" import notificationList %}
+
+
+{# Import components #}
+{# from "components/header/header.njk" import header #}
+{# from "components/footer/footer.njk" import footer #}
+{# from "components/sidebar/sidebar.njk" import sidebar #}
+
+{% block title %}お知らせ投稿 - {{ site.title }}{% endblock %}
+
+{% block bodyClass %}admin-layout{% endblock %}
+
+{% block content %}
+  <div class="admin-content">
+    {{ notificationList(notifications) }}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    // Add any page-specific JavaScript here
+  </script>
+{% endblock %}

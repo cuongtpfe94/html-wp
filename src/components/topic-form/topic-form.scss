@@ -1,0 +1,222 @@
+@use "../../scss/abstracts/mixins" as *;
+@use "../../scss/abstracts/variables" as *;
+
+.topic-form {
+  min-height: 100vh;
+
+  &__header-container {
+    background: var(--bg-secondary);
+    padding-bottom: 40px;
+  }
+
+  // Header
+  &__header {
+    padding-bottom: var(--spacing-xl);
+    @include flex-between;
+  }
+
+  &__title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__actions {
+    @include flex-center;
+    gap: var(--spacing-sm);
+  }
+
+  // List container
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  // Item container
+  &__item {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 48px 1fr 48px;
+  }
+
+  &__handle {
+    border-right: 1px solid var(--border-color);
+    @include flex-center;
+    cursor: grab;
+    grid-row: 1 / span 3;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &__handle-icon {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+  }
+
+  &__row {
+    display: grid;
+    min-height: 48px;
+    border-bottom: 1px solid var(--border-color);
+
+    &--title,
+    &--url {
+      grid-template-columns: 120px 1fr;
+    }
+
+    &--image {
+      grid-template-columns: 120px 200px 1fr;
+      border-bottom: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__image {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__delete-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    border: none;
+    cursor: pointer;
+    @include flex-center;
+    font-size: var(--font-size-sm);
+    @include transition;
+  }
+
+  // Cells
+  &__cell {
+    border-right: 1px solid var(--border-color);
+    padding: var(--spacing-sm);
+    @include flex-center;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &--handle {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+
+    &--label {
+      justify-content: flex-start;
+      padding-left: var(--spacing-md);
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+    }
+
+    &--input {
+      padding: var(--spacing-sm) var(--spacing-md);
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    &--pages {
+      padding: var(--spacing-sm);
+    }
+  }
+
+  // Image upload
+  &__upload {
+    position: relative;
+    width: 100%;
+    height: 32px;
+  }
+
+  &__upload-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__upload-area {
+    width: 100%;
+    height: 100%;
+    border: 1px dashed var(--border-color);
+    border-radius: var(--border-radius-sm);
+    @include flex-center;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+  }
+
+  // Delete button
+  &__delete {
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    @include flex-center;
+    font-size: var(--font-size-sm);
+    @include transition;
+  }
+
+  // Pagination
+  &__pagination {
+    @include flex-center;
+    gap: var(--spacing-sm);
+    transform: rotate(90deg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+    opacity: 0.3;
+    @include transition;
+
+    &--active {
+      background: var(--text-primary);
+      opacity: 1;
+    }
+  }
+
+  // Footer
+  &__footer {
+    padding: var(--spacing-lg) 0;
+    background: var(--bg-secondary);
+    text-align: right;
+  }
+
+  &__footer-actions {
+    @include flex-center;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+  }
+}

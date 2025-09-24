@@ -1,0 +1,131 @@
+{# Announcement Form Component #}
+{% macro announcementForm(data) %}
+<div class="announcement-form app-form">
+  <div class="announcement-form__header">
+    <h1 class="announcement-form__title">{{ data.title }}</h1>
+    <div class="announcement-form__actions">
+      <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">下書き保存</span></button> |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">プレビュー</span></button> |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">公開</span></button>
+    </div>
+  </div>
+
+  <form class="announcement-form__content">
+    {# ❷ お知らせのタイトルを入力 #}
+    <div class="form-group">
+      <label class="form-label">お知らせタイトル</label>
+      <div class="form-field">
+        <input type="text" class="form-input" placeholder="テキストを入力">
+        <div class="form-checkboxes">
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox" checked>
+            <span class="checkbox-text">NEW</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox" checked>
+            <span class="checkbox-text">ニュースリリース</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    {# ❸ お知らせのカテゴリを選択 #}
+    <div class="form-group">
+      <label class="form-label">カテゴリ選択（2つまで）</label>
+      <div class="announcement-form__checkboxes">
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox" checked>
+          <span class="checkbox-text">財団案内</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox" checked>
+          <span class="checkbox-text">BL部品</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox">
+          <span class="checkbox-text">試験・評定等</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox">
+          <span class="checkbox-text">住宅・建築評価</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox">
+          <span class="checkbox-text">ISO審査登録</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox">
+          <span class="checkbox-text">調査・研究</span>
+        </label>
+      </div>
+    </div>
+
+    {# ❹ 公開日を入力 #}
+    <div class="form-group">
+      <div class="d-flex flex-row align-items-start">
+        <label class="form-label mr-4 d-inline-block">公開日</label>
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox" checked>
+          <span class="checkbox-text">予約投稿</span>
+        </label>
+      </div>
+      <div class="date-input-wrapper">
+        <input type="date" class="form-input form-input--date" placeholder="日付を入力">
+      </div>
+    </div>
+
+    {# ❺ お知らせのタイプを選択 #}
+    <div class="form-group">
+      <label class="form-label">お知らせタイプ</label>
+      <div class="form-select-wrapper max-w-56">
+        <select class="form-select" id="announcement-type">
+          <option value="page-link">ページリンク</option>
+          <option value="file-link">ファイルリンク</option>
+          <option value="detail-article">詳細記事</option>
+        </select>
+      </div>
+    </div>
+
+    {# ❶❼❽ 動的に変化する入力欄 #}
+    <div class="form-group dynamic-content" id="page-link-content">
+      <label class="form-label">リンクURL</label>
+      <div class="form-field">
+        <input type="url" class="form-input" placeholder="リンク先URLを入力">
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox">
+          <span class="checkbox-text">別ウィンドウ（別タブ）で開く</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group dynamic-content" id="file-link-content" style="display: none;">
+      <label class="form-label">ファイルアップロード</label>
+      <div class="file-upload">
+        <input type="file" class="file-input" id="file-upload">
+        <label for="file-upload" class="file-upload-label">
+          <span>ドラッグ&ドロップ</span>
+        </label>
+        <button type="button" class="app-button app-button--ghost app-button--small file-upload__btn">
+          <span class="text-default">選択</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group dynamic-content" id="detail-article-content" style="display: none;">
+      <label class="form-label">お知らせ詳細</label>
+      <textarea class="form-textarea" rows="10" placeholder="お知らせ詳細を入力"></textarea>
+    </div>
+  </form>
+  <div class="announcement-form__footer">
+    <button class="app-button app-button--ghost app-button--small">
+      <span class="text-default">下書き保存</span></button> |
+    <button class="app-button app-button--ghost app-button--small">
+      <span class="text-default">プレビュー</span></button> |
+    <button class="app-button app-button--ghost app-button--small">
+      <span class="text-default">公開</span></button>
+  </div>
+</div>
+{% endmacro %}

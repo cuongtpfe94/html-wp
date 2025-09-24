@@ -1,0 +1,93 @@
+{# Notification List Component #}
+{% macro notificationList(data) %}
+<div class="notification-list">
+  <div class="notification-list__header-container">
+  <div class="notification-list__header">
+    <div class="notification-list__title">{{ data.title }}</div>
+    <div class="notification-list__actions">
+      <div class="notification-list__controls">
+        <button class="button button--ghost button--small">
+          <span class="text-default">下書き保存</span></button> |
+        <button class="button button--ghost button--small">
+          <span class="text-default">プレビュー</span></button> |
+        <button class="button button--ghost button--small">
+          <span class="text-default">公開</span></button>
+      </div>
+    </div>
+  </div>
+  <button onclick="window.location.href='/announcement-create'" class="button button--primary button--small mt-2" id="new-announcement">
+    <span class="button__icon">+</span>
+    新規追加
+  </button>
+  </div>
+
+
+  <div class="notification-list__filters">
+    <div class="filter-group">
+      <select class="filter-select">
+        <option>すべての日付</option>
+      </select>
+      <select class="filter-select">
+        <option>カテゴリー</option>
+      </select>
+      <select class="filter-select">
+        <option>すべてのユーザー</option>
+      </select>
+      <button class="button button--outline button--small">絞り込み</button>
+    </div>
+    <div class="search-group">
+      <input type="text" class="search-input" placeholder="検索">
+      <button class="button button--outline button--small">検索実行</button>
+    </div>
+  </div>
+
+  <div class="notification-list__table">
+    <div class="table-header">
+      <div class="table-header__cell table-header__cell--checkbox">
+        <input type="checkbox" class="checkbox">
+      </div>
+      <div class="table-header__cell table-header__cell--title">タイトル</div>
+      <div class="table-header__cell table-header__cell--category">カテゴリー</div>
+      <div class="table-header__cell table-header__cell--date">日付</div>
+      <div class="table-header__cell table-header__cell--type">お知らせタイプ</div>
+    </div>
+
+    {% for item in data.items %}
+    <div class="table-row">
+      <div class="table-cell table-cell--checkbox">
+        <input type="checkbox" class="checkbox">
+      </div>
+      <div class="table-cell table-cell--title">
+        <a href="{{ item.url }}" class="table-link">{{ item.title }}</a>
+      </div>
+      <div class="table-cell table-cell--category">
+        <span class="category-tag category-tag--{{ item.category.type }}">
+          {{ item.category.name }}
+        </span>
+      </div>
+      <div class="table-cell table-cell--date">
+        <div class="date-info">
+          <div class="date-info__author">{{ item.author }}</div>
+          <div class="date-info__date">{{ item.date }}</div>
+        </div>
+      </div>
+      <div class="table-cell table-cell--type">
+        <span class="type-badge">{{ item.type }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="notification-list__footer">
+    <div class="bulk-actions">
+      <select class="bulk-select">
+        <option>一括操作</option>
+      </select>
+      <button class="button button--outline button--small">適用</button>
+    </div>
+    <div class="pagination">
+      <span class="pagination__info">7 件中 1-7 件目を表示</span>
+    </div>
+  </div>
+</div>
+{% endmacro %}

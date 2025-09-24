@@ -1,0 +1,155 @@
+@use "../../scss/abstracts/mixins" as *;
+@use "../../scss/abstracts/variables" as *;
+
+.app-form {
+  .form-group {
+    margin-bottom: var(--spacing-lg);
+
+    &--inline {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: var(--spacing-lg);
+      align-items: start;
+    }
+  }
+
+  .form-input {
+    height: 42px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    overflow: hidden;
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    flex: 1;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    &--date {
+      max-width: 200px;
+    }
+  }
+
+  .form-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 40px;
+      top: 2px;
+      height: calc(100% - 4px);
+      width: 1px;
+      background-color: var(--border-color);
+      pointer-events: none;
+    }
+  }
+
+  .form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    padding-right: 40px; // Space for arrow icon
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background-color: white;
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+
+    // Custom dropdown arrow
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+  }
+
+  .form-textarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    font-family: inherit;
+    resize: vertical;
+    min-height: 200px;
+  }
+
+  .form-checkboxes {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-sm);
+  }
+
+  .checkbox-label {
+    @include flex-center;
+    justify-content: flex-start;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    border-radius: 2px;
+    background: white;
+    position: relative;
+    cursor: pointer;
+    margin-right: var(--spacing-xs);
+    flex-shrink: 0;
+
+    &::before,
+    &:checked::before {
+      content: none !important;
+    }
+
+    &:checked {
+      background: white;
+      border-color: black;
+
+      &::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "title": "お知らせ投稿",
+  "items": [
+    {
+      "title": "[ニュースリリース]「人生100年時代のリフォーム応援サイト」を開設しました",
+      "url": "/notifications/1",
+      "category": {
+        "name": "BL部品",
+        "type": "bl"
+      },
+      "author": "大阪営業所",
+      "date": "2023年8月28日 11:03 PM",
+      "type": "詳細記事"
+    },
+    {
+      "title": "優良住宅部品認定制度ハンドブックを更新しました",
+      "url": "/notifications/2",
+      "category": {
+        "name": "BL部品",
+        "type": "bl"
+      },
+      "author": "大阪営業所",
+      "date": "2023年8月28日 9:50 AM",
+      "type": "詳細記事"
+    },
+    {
+      "title": "TBTLにて海外研修生向け業務紹介・施設見学会を実施しました",
+      "url": "/notifications/3",
+      "category": {
+        "name": "試験・評定等",
+        "type": "test"
+      },
+      "author": "大阪営業所",
+      "date": "2023年8月28日 11:03 PM",
+      "type": "ファイルリンク"
+    },
+    {
+      "title": "夏季休暇について",
+      "url": "/notifications/4",
+      "category": {
+        "name": "財団案内",
+        "type": "financial"
+      },
+      "author": "大阪営業所",
+      "date": "2023年8月28日 9:00 AM",
+      "type": "詳細記事"
+    },
+    {
+      "title": "3団体合同懇親パーティを開催しました",
+      "url": "/notifications/5",
+      "category": {
+        "name": "財団案内",
+        "type": "financial"
+      },
+      "author": "大阪営業所",
+      "date": "2023年8月4日 11:03 PM",
+      "type": "ファイルリンク"
+    },
+    {
+      "title": "「住宅における良好な温熱環境実現推進フォーラム」ホームページに「断熱コーナー」を新設しました",
+      "url": "/notifications/6",
+      "category": {
+        "name": "調査研究",
+        "type": "research"
+      },
+      "author": "大阪営業所",
+      "date": "2023年8月2日 9:00 AM",
+      "type": "詳細記事"
+    }
+  ]
+}

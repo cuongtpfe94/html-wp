@@ -1,0 +1,48 @@
+{
+  "title": "トピックス投稿",
+  "pages": [
+    {
+      "value": "top",
+      "label": "トップページ"
+    },
+    {
+      "value": "bl-parts",
+      "label": "BL部品"
+    },
+    {
+      "value": "testing",
+      "label": "試験・評定"
+    },
+    {
+      "value": "evaluation",
+      "label": "性能評価"
+    },
+    {
+      "value": "research",
+      "label": "調査・研究"
+    }
+  ],
+  "topics": [
+    {
+      "title": "人生100年時代のリフォーム応援サイト",
+      "url": "https://www.cbl.or.jp/r-navi/",
+      "image": "r-navi.png",
+      "newWindow": false,
+      "targetPages": ["top", "bl-parts"]
+    },
+    {
+      "title": "既存賃貸集合住宅の省エネ化支援事業",
+      "url": "https://www.cbl.or.jp/blsys/2024tokusetsu/kizonindex.html",
+      "image": "",
+      "newWindow": false,
+      "targetPages": ["top"]
+    },
+    {
+      "title": "ご存知でしたか？住宅部品",
+      "url": "https://www.cbl.or.jp/blsys/gozonji/index.html",
+      "image": "buhin.jpg",
+      "newWindow": false,
+      "targetPages": ["top", "bl-parts"]
+    }
+  ]
+}

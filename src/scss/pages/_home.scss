@@ -1,0 +1,35 @@
+.hero {
+  padding: calc(var(--spacing-xl) * 2) 0;
+  background-color: var(--bg-secondary);
+  text-align: center;
+
+  &__title {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  &__description {
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+}
+
+.components {
+  padding: var(--spacing-xl) 0;
+
+  &__title {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

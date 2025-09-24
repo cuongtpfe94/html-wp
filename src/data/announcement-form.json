@@ -1,0 +1,25 @@
+{
+  "title": "お知らせ投稿",
+  "categories": [
+    "財団案内",
+    "BL部品",
+    "試験・評定等",
+    "住宅・建築評価",
+    "ISO審査登録",
+    "調査・研究"
+  ],
+  "announcementTypes": [
+    {
+      "value": "page-link",
+      "label": "ページリンク"
+    },
+    {
+      "value": "file-link",
+      "label": "ファイルリンク"
+    },
+    {
+      "value": "detail-article",
+      "label": "詳細記事"
+    }
+  ]
+}

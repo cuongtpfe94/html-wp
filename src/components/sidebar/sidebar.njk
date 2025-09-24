@@ -1,0 +1,24 @@
+{# Sidebar Component #}
+{% macro sidebar(sidebarData) %}
+<aside class="sidebar">
+  <div class="sidebar__header">
+    <h3 class="sidebar__title">{{ data.title }}</h3>
+    <button class="sidebar__close" data-close-sidebar>×</button>
+  </div>
+
+  <nav class="sidebar__nav">
+    <ul class="sidebar__menu">
+      {% for item in sidebarData.menu %}
+        <li class="sidebar__item">
+          <a href="{{ item.url }}" class="sidebar__link {{ 'sidebar__link--active' if item.active }}">
+            {% if item.icon %}
+              <span class="sidebar__icon">{{ item.icon }}</span>
+            {% endif %}
+            {{ item.text }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</aside>
+{% endmacro %}

@@ -1,0 +1,36 @@
+{
+  "about": {
+    "title": "About Us",
+    "description": "We are dedicated to providing the best components and solutions for your web projects."
+  },
+  "quickLinks": {
+    "title": "Quick Links",
+    "links": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "About",
+        "url": "/about"
+      },
+      {
+        "text": "Services",
+        "url": "/services"
+      },
+      {
+        "text": "Contact",
+        "url": "/contact"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Info",
+    "items": [
+      "Email: info@example.com",
+      "Phone: (123) 456-7890",
+      "Address: 123 Street, City, Country"
+    ]
+  },
+  "copyright": "© 2025 Component Library. All rights reserved."
+}

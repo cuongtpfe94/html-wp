@@ -1,0 +1,24 @@
+{# Header Component #}
+{% macro header(navigation) %}
+<header class="header">
+  <nav class="nav">
+    <div class="nav__logo">
+      <a href="{{ navigation.logo.url | default('/') }}" class="nav__logo-link">
+        {{ navigation.logo.text | default('Logo') }}
+      </a>
+    </div>
+    <ul class="nav__menu">
+      {% for item in navigation.menu %}
+        <li class="nav__item">
+          <a href="{{ item.url }}" class="nav__link {{ 'nav__link--active' if item.active }}">
+            {{ item.text }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <button class="nav__menu-toggle" aria-label="Toggle menu">
+      <span></span>
+    </button>
+  </nav>
+</header>
+{% endmacro %}

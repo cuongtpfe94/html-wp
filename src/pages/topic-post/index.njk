@@ -1,0 +1,17 @@
+{% extends "layouts/base.njk" %}
+{% from "components/topic-form/topic-form.njk" import topicForm %}
+
+{% block title %}トピックス投稿 - {{ site.title }}{% endblock %}
+
+{% block bodyClass %}admin-layout{% endblock %}
+
+{% block content %}
+  <div class="admin-content">
+    {{ topicForm(topicData) }}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+</script>
+{% endblock %}
