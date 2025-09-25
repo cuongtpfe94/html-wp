@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--border-radius-sm);
   font-weight: 500;
+  position: relative;
 
   // Variants
   &--primary {
@@ -13,8 +13,9 @@
   }
 
   &--secondary {
-    background-color: var(--color-secondary);
-    color: var(--text-light);
+    background-color: #ffffff;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
   }
 
   &--outline {
