@@ -87,3 +87,52 @@ gulp.task("build", gulp.series("clean", "styles", "nunjucks", "assets"));
 
 // Default task
 gulp.task("default", gulp.series("build", "watch"));
+
+// Compile banner-list SCSS to CSS
+gulp.task("banner-styles", () => {
+  return gulp
+    .src("src/components/banner-list/banner-list.scss")
+    .pipe(sass().on("error", sass.logError))
+    .pipe(autoprefixer())
+    .pipe(gulp.dest("dist/css/banner-list"))
+    .pipe(cleanCSS())
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(gulp.dest("dist/css/banner-list"))
+    .pipe(browserSync.stream());
+});
+
+// Update watch task
+gulp.task("watch", () => {
+  browserSync.init({
+    server: {
+      baseDir: "./dist",
+    },
+    port: 3000,
+    open: true,
+    notify: false,
+  });
+
+  // Watch Nunjucks templates and data
+  gulp.watch(["src/**/*.njk", "src/data/**/*.json"], gulp.series("nunjucks"));
+
+  // Watch SCSS files
+  gulp.watch(
+    ["src/scss/**/*.scss", "src/components/**/*.scss", "!src/components/banner-list/banner-list.scss"],
+    gulp.series("styles")
+  );
+
+  // Watch banner-list SCSS
+  gulp.watch(
+    "src/components/banner-list/banner-list.scss",
+    gulp.series("banner-styles")
+  );
+
+  // Watch assets
+  gulp.watch("src/assets/**/*", gulp.series("assets"));
+});
+
+// Update build task
+gulp.task("build", gulp.series("clean", "styles", "banner-styles", "nunjucks", "assets"));
+
+// Default task remains the same
+gulp.task("default", gulp.series("build", "watch"));
