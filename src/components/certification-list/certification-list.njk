@@ -1,0 +1,256 @@
+{# Certification List Component #}
+{% macro certificationList(data) %}
+<div class="certification-list app-form">
+  <div class="certification-list__header">
+    <h1 class="certification-list__title">CASBEE認証一覧</h1>
+    <div class="certification-list__actions">
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">下書き保存</span>
+      </button> |
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">プレビュー</span>
+      </button> |
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">公開</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="certification-list__content">
+    <div class="certification-list__page-select">
+      <label class="form-label">ページ選択</label>
+      <div class="form-select-wrapper max-w-64">
+        <select class="form-select">
+          <option value="1">CASBEE建築評価認証一覧</option>
+          <option value="2">CASBEE</option>
+        </select>
+      </div>
+    </div>
+
+    {# CSV Import Section #}
+    <div class="certification-list__csv">
+      <div class="certification-list__csv-input">
+        <label class="form-label">ファイルアップロード</label>
+        <div class="file-upload">
+          <input type="file" class="file-input" id="file-upload">
+          <label for="file-upload" class="file-upload-label">
+            <span>ドラッグ&ドロップ</span>
+          </label>
+          <button type="button" class="app-button app-button--ghost app-button--small file-upload__btn">
+            <span class="text-default">選択</span>
+          </button>
+        </div>
+      </div>
+      <button class="app-button app-button--dark app-button--large">
+        <span>表を更新</span>
+      </button>
+
+      {# PDF Upload Section #}
+      <div class="certification-list__pdf">
+        <label class="form-label">PDFファイルをまとめてアップロード</label>
+        <div class="file-upload">
+          <input type="file" class="file-input" accept=".pdf" multiple>
+          <label class="file-upload-label">
+            <span>PDFファイル</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    {# Search Section #}
+    <div class="certification-list__search">
+      <span>＜CASBEE建築評価認証一覧＞</span>
+      <div class="certification-list__search-input">
+        <input type="text" class="form-input" placeholder="テキスト検索">
+        <span class="certification-list__search-icon">🔍</span>
+      </div>
+    </div>
+
+    {# Table Section #}
+    <div class="certification-list__table">
+      <table class="table">
+        <tbody>
+          {# Row 1 - Gray background #}
+          <tr class="table__row table__row--gray">
+            <td class="table__td table__td--label">評価認証番号</td>
+            <td class="table__td table__td--label">建物の名称</td>
+            <td class="table__td table__td--label">認証日</td>
+            <td class="table__td table__td--label">有効期限</td>
+            <td class="table__td table__td--label">ランク</td>
+            <td class="table__td table__td--label">評価ツール/段階</td>
+            <td class="table__td table__td--actions" rowspan="4">
+              <div class="certification-list__file-display">
+                <div class="certification-list__file-display__item">
+                  <span class="certification-list__file-display__icon">📄</span>
+                  <span class="certification-list__file-display__name">0041-25.pdf</span>
+                  <button class="app-button app-button--info app-button--small">PDF</button>
+                </div>
+                <button class="app-button app-button--ghost app-button--small text-decoration-underline">PDFの削除</button>
+                <button class="app-button app-button--info app-button--small">データを削除</button>
+              </div>
+            </td>
+          </tr>
+
+          {# Row 2 - White background #}
+          <tr class="table__row table__row--white">
+            <td class="table__td">CBL-CAS建第-0036-25</td>
+            <td class="table__td">GLP浜吉I プロジェクト</td>
+            <td class="table__td">2025/05/21</td>
+            <td class="table__td">2028/05/21</td>
+            <td class="table__td">Aランク</td>
+            <td class="table__td">CASBEE-建築(新築)2021年SDGs対応版/竣工段階</td>
+          </tr>
+
+          {# Row 3 - White background #}
+          <tr class="table__row table__row--gray">
+            <td class="table__td table__td--label">申請者</td>
+            <td class="table__td table__td--label">設計者</td>
+            <td class="table__td table__td--label">施工者</td>
+            <td class="table__td table__td--label">建設地</td>
+            <td class="table__td table__td--label">竣工日</td>
+            <td class="table__td table__td--label">用途/規模</td>
+          </tr>
+
+          {# Row 4 - Gray background #}
+          <tr class="table__row table__row--white">
+            <td class="table__td">株式会社大京</td>
+            <td class="table__td">（申請者の希望により非公開）</td>
+            <td class="table__td">（申請者の希望により非公開）</td>
+            <td class="table__td">東京都千代田区</td>
+            <td class="table__td">2025/05/15</span></td>
+            <td class="table__td">集合住宅 ／1699.28m2</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <tbody>
+          {# Row 1 - Gray background #}
+          <tr class="table__row table__row--gray">
+            <td class="table__td table__td--label">評価認証番号</td>
+            <td class="table__td table__td--label">建物の名称</td>
+            <td class="table__td table__td--label">認証日</td>
+            <td class="table__td table__td--label">有効期限</td>
+            <td class="table__td table__td--label">ランク</td>
+            <td class="table__td table__td--label">評価ツール/段階</td>
+            <td class="table__td table__td--actions" rowspan="4">
+              <div class="certification-list__file-display">
+                <div class="certification-list__file-display__item">
+                  <span class="certification-list__file-display__icon">📄</span>
+                  <span class="certification-list__file-display__name">0041-25.pdf</span>
+                  <button class="app-button app-button--info app-button--small">PDF</button>
+                </div>
+                <button class="app-button app-button--ghost app-button--small text-decoration-underline">PDFの削除</button>
+                <button class="app-button app-button--info app-button--small">データを削除</button>
+              </div>
+            </td>
+          </tr>
+
+          {# Row 2 - White background #}
+          <tr class="table__row table__row--white">
+            <td class="table__td">CBL-CAS建第-0036-25</td>
+            <td class="table__td">GLP浜吉I プロジェクト</td>
+            <td class="table__td">2025/05/21</td>
+            <td class="table__td">2028/05/21</td>
+            <td class="table__td">Aランク</td>
+            <td class="table__td">CASBEE-建築(新築)2021年SDGs対応版/竣工段階</td>
+          </tr>
+
+          {# Row 3 - White background #}
+          <tr class="table__row table__row--gray">
+            <td class="table__td table__td--label">申請者</td>
+            <td class="table__td table__td--label">設計者</td>
+            <td class="table__td table__td--label">施工者</td>
+            <td class="table__td table__td--label">建設地</td>
+            <td class="table__td table__td--label">竣工日</td>
+            <td class="table__td table__td--label">用途/規模</td>
+          </tr>
+
+          {# Row 4 - Gray background #}
+          <tr class="table__row table__row--white">
+            <td class="table__td">株式会社大京</td>
+            <td class="table__td">（申請者の希望により非公開）</td>
+            <td class="table__td">（申請者の希望により非公開）</td>
+            <td class="table__td">東京都千代田区</td>
+            <td class="table__td">2025/05/15</span></td>
+            <td class="table__td">集合住宅 ／1699.28m2</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <tbody>
+          {# Row 1 - Gray background #}
+          <tr class="table__row table__row--gray">
+            <td class="table__td table__td--label">評価認証番号</td>
+            <td class="table__td table__td--label">建物の名称</td>
+            <td class="table__td table__td--label">認証日</td>
+            <td class="table__td table__td--label">有効期限</td>
+            <td class="table__td table__td--label">ランク</td>
+            <td class="table__td table__td--label">評価ツール/段階</td>
+            <td class="table__td table__td--actions" rowspan="4">
+              <div class="certification-list__file-display">
+                <div class="certification-list__file-display__item">
+                  <span class="certification-list__file-display__icon">📄</span>
+                  <span class="certification-list__file-display__name">0041-25.pdf</span>
+                  <button class="app-button app-button--info app-button--small">PDF</button>
+                </div>
+                <button class="app-button app-button--ghost app-button--small text-decoration-underline">PDFの削除</button>
+                <button class="app-button app-button--info app-button--small">データを削除</button>
+              </div>
+            </td>
+          </tr>
+
+          {# Row 2 - White background #}
+          <tr class="table__row table__row--white">
+            <td class="table__td">CBL-CAS建第-0036-25</td>
+            <td class="table__td">GLP浜吉I プロジェクト</td>
+            <td class="table__td">2025/05/21</td>
+            <td class="table__td">2028/05/21</td>
+            <td class="table__td">Aランク</td>
+            <td class="table__td">CASBEE-建築(新築)2021年SDGs対応版/竣工段階</td>
+          </tr>
+
+          {# Row 3 - White background #}
+          <tr class="table__row table__row--gray">
+            <td class="table__td table__td--label">申請者</td>
+            <td class="table__td table__td--label">設計者</td>
+            <td class="table__td table__td--label">施工者</td>
+            <td class="table__td table__td--label">建設地</td>
+            <td class="table__td table__td--label">竣工日</td>
+            <td class="table__td table__td--label">用途/規模</td>
+          </tr>
+
+          {# Row 4 - Gray background #}
+          <tr class="table__row table__row--white">
+            <td class="table__td">株式会社大京</td>
+            <td class="table__td">（申請者の希望により非公開）</td>
+            <td class="table__td">（申請者の希望により非公開）</td>
+            <td class="table__td">東京都千代田区</td>
+            <td class="table__td">2025/05/15</span></td>
+            <td class="table__td">集合住宅 ／1699.28m2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="certification-list__pagination">
+      <span class="certification-list__dot certification-list__dot--active"></span>
+      <span class="certification-list__dot certification-list__dot--active"></span>
+      <span class="certification-list__dot certification-list__dot--active"></span>
+    </div>
+  </div>
+
+  <div class="certification-list__footer">
+    <button class="app-button app-button--ghost app-button--small">
+      <span class="text-default">下書き保存</span>
+    </button> |
+    <button class="app-button app-button--ghost app-button--small">
+      <span class="text-default">プレビュー</span>
+    </button> |
+    <button class="app-button app-button--ghost app-button--small">
+      <span class="text-default">公開</span>
+    </button>
+  </div>
+</div>
+{% endmacro %}

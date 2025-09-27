@@ -1,0 +1,17 @@
+{% extends "layouts/base.njk" %}
+{% from "components/certification-list/certification-list.njk" import certificationList %}
+
+{% block title %}トピックス投稿 - {{ site.title }}{% endblock %}
+
+{% block bodyClass %}admin-layout{% endblock %}
+
+{% block content %}
+  <div class="admin-content">
+    {{ certificationList() }}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+</script>
+{% endblock %}
