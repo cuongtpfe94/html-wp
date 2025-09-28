@@ -4,22 +4,22 @@
   background-color: var(--bg-secondary);
 
   // Header fixed at top
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    z-index: 1001;
-    background-color: var(--color-info);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  // .header {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   height: 70px;
+  //   z-index: 1001;
+  //   background-color: var(--color-info);
+  //   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-    .nav {
-      height: 70px;
-      padding: 0 var(--spacing-lg);
-      max-width: none;
-    }
-  }
+  //   .nav {
+  //     height: 70px;
+  //     padding: 0 var(--spacing-lg);
+  //     max-width: none;
+  //   }
+  // }
 
   // Sidebar fixed at left
   .sidebar {

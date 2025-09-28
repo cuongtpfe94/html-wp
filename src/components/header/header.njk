@@ -1,24 +1,174 @@
 {# Header Component #}
-{% macro header(navigation) %}
+{% macro header(data) %}
 <header class="header">
-  <nav class="nav">
-    <div class="nav__logo">
-      <a href="{{ navigation.logo.url | default('/') }}" class="nav__logo-link">
-        {{ navigation.logo.text | default('Logo') }}
-      </a>
+  {# Main header #}
+  <div class="header__main">
+    <div class="header__container">
+
+      {# Logo #}
+      <div class="header__logo">
+        <a href="/" class="header__logo-link">
+          <img src="/assets/images/logo.png" alt="ベターリビング" class="header__logo-image">
+        </a>
+      </div>
+
+      {# Desktop Navigation #}
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href="#" class="header__nav-link">ホーム</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#" class="header__nav-link">財団案内</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#" class="header__nav-link">業務案内</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#" class="header__nav-link">お知らせ</a>
+          </li>
+        </ul>
+      </nav>
+
+      {# Search #}
+      <div class="header__search">
+        <div class="header__search-text">無やお問い合わせ</div>
+        <div class="header__search-text header__search-text--secondary">ALeCos200</div>
+        <form class="header__search-form">
+          <input type="search" class="header__search-input" placeholder="検索">
+          <button type="submit" class="header__search-button" aria-label="検索">
+            <svg class="header__search-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="currentColor" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      {# Mobile hamburger menu #}
+      <button class="header__menu-toggle" aria-label="メニューを開く">
+        <span class="header__menu-toggle-line"></span>
+        <span class="header__menu-toggle-line"></span>
+        <span class="header__menu-toggle-line"></span>
+      </button>
     </div>
-    <ul class="nav__menu">
-      {% for item in navigation.menu %}
-        <li class="nav__item">
-          <a href="{{ item.url }}" class="nav__link {{ 'nav__link--active' if item.active }}">
-            {{ item.text }}
+  </div>
+
+  {# Mobile Navigation Drawer #}
+  <div class="header__drawer">
+    <div class="header__drawer-overlay"></div>
+    <nav class="header__drawer-nav">
+      <div class="header__drawer-header">
+        <div class="header__drawer-logo">
+          <a href="/">
+            <img src="/assets/images/logo.png" alt="ベターリビング" class="header__drawer-image">
           </a>
+        </div>
+        <div>
+          <button type="submit" class="header__drawer-search" aria-label="検索">
+            <svg class="header__drawer-search-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="currentColor" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+          </button>
+          <button class="header__drawer-close" aria-label="メニューを閉じる">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <ul class="header__drawer-list">
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">TOP</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
         </li>
-      {% endfor %}
-    </ul>
-    <button class="nav__menu-toggle" aria-label="Toggle menu">
-      <span></span>
-    </button>
-  </nav>
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">財団法人建築研究協会について</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">建築・住宅・設計・評価</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">建築基準法適合性判定業務</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">システム建築基準</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">建築・住宅・建築基準適合</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">研究について</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">アクセス</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="header__drawer-item">
+          <a href="#" class="header__drawer-link">採用情報</a>
+          <button class="header__drawer-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </li>
+      </ul>
+
+      {# Mobile drawer buttons #}
+      <div class="header__drawer-buttons">
+        <button class="header__drawer-button header__drawer-button--primary">
+          申請受付シス
+        </button>
+        <button class="header__drawer-button header__drawer-button--secondary">
+          外部評価等
+        </button>
+      </div>
+
+      {# Language/Site selection #}
+      <div class="header__drawer-footer">
+        <div class="header__drawer-sites">
+          <a href="#" class="header__drawer-site">BLサイトのご案内</a>
+          <a href="#" class="header__drawer-site">English Site</a>
+        </div>
+      </div>
+    </nav>
+  </div>
 </header>
 {% endmacro %}

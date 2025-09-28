@@ -1,36 +1,194 @@
 {# Footer Component #}
 {% macro footer(data) %}
 <footer class="footer">
-  <div class="footer__container">
-    <div class="footer__content">
-      <div class="footer__section">
-        <h3 class="footer__title">{{ data.about.title }}</h3>
-        <p class="footer__text">{{ data.about.description }}</p>
+  {# Main footer content #}
+  <div class="footer__main">
+    <div class="footer__container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__contact">
+            <div class="footer__contact-item">
+              <span class="footer__contact-label">一般財団法人 ベターリビング</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="footer__section">
-        <h3 class="footer__title">{{ data.quickLinks.title }}</h3>
-        <ul class="footer__links">
-          {% for link in data.quickLinks.links %}
-            <li>
-              <a href="{{ link.url }}" class="footer__link">{{ link.text }}</a>
+      {# Footer navigation #}
+      <div class="footer__nav">
+        <div class="footer__nav-section">
+          <h3 class="footer__nav-title">財団案内</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">理事長挨拶</a>
             </li>
-          {% endfor %}
-        </ul>
-      </div>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">財団概要</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">沿革</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">組織図</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">役員・評議員</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">事業報告書</a>
+            </li>
+          </ul>
+        </div>
 
-      <div class="footer__section">
-        <h3 class="footer__title">{{ data.contact.title }}</h3>
-        <ul class="footer__contact">
-          {% for item in data.contact.items %}
-            <li class="footer__contact-item">{{ item }}</li>
-          {% endfor %}
-        </ul>
+        <div class="footer__nav-section">
+          <h3 class="footer__nav-title">試験・評定等</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">建築技術の性能証明</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">防耐火構造等の評定</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">建築技術審査証明</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">構造方法等の評定</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">防火設備検査</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-section">
+          <h3 class="footer__nav-title">BL部品</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">BL部品とは</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">認定の仕組み</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">認定部品検索</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">認定申請の手続き</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">認定基準</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-section">
+          <h3 class="footer__nav-title">試験・評定等</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">建築技術の性能証明</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">防耐火構造等の評定</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">建築技術審査証明</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">構造方法等の評定</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">防火設備検査</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-section">
+          <h3 class="footer__nav-title">住宅・建築評価</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">住宅性能評価</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">長期優良住宅技術的審査</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">建築物省エネルギー性能表示制度</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">CASBEE認証</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">フラット35適合証明</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-section">
+          <h3 class="footer__nav-title">ISO審査登録</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ISO9001</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ISO14001</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ISO45001</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">審査員紹介</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-section">
+          <h3 class="footer__nav-title">調査・研究</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">研究開発</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">技術資料</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">セミナー・講習会</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">出版物</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__nav-section">
+          <h3 class="footer__nav-title">ISO審査登録</h3>
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ISO9001</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ISO14001</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">ISO45001</a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">審査員紹介</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="footer__bottom">
-      <p class="footer__copyright">{{ data.copyright }}</p>
+  {# Footer bottom section #}
+  <div class="footer__bottom">
+    <div class="footer__container">
+      <div class="footer__bottom-content">
+        <div class="footer__copyright">
+          <p class="footer__copyright-text">© 2025 Better Living. All Rights Reserved.</p>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
