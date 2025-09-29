@@ -30,6 +30,9 @@
               this.drawer = document.querySelector(".header__drawer");
               this.drawerOverlay = document.querySelector(".header__drawer-overlay");
               this.drawerClose = document.querySelector(".header__drawer-close");
+              // Add mobile search elements
+              this.searchButton = document.querySelector(".header__search-button");
+              this.searchMobile = document.querySelector(".header__search-mobile");
               this.init();
             }
             init() {
@@ -43,6 +46,13 @@
                 e.preventDefault();
                 this.toggleMenu();
               });
+              // Toggle mobile search when search button is clicked
+              if (this.searchButton && this.searchMobile) {
+                this.searchButton.addEventListener("click", (e) => {
+                  e.preventDefault();
+                  this.toggleMobileSearch();
+                });
+              }
               // Close menu when overlay is clicked
               if (this.drawerOverlay) {
                 this.drawerOverlay.addEventListener("click", () => {
@@ -83,6 +93,47 @@
               } else {
                 this.openMenu();
               }
+            }
+            // Mobile search methods
+            toggleMobileSearch() {
+              if (this.isMobileSearchOpen()) {
+                this.closeMobileSearch();
+              } else {
+                this.openMobileSearch();
+              }
+            }
+            openMobileSearch() {
+              this
+                .searchMobile
+                .classList
+                .add("is-open");
+              this
+                .searchButton
+                .classList
+                .add("is-active");
+              // Focus on search input
+              const searchInput = this.searchMobile.querySelector(".header__search-input-mobile");
+              if (searchInput) {
+                setTimeout(() => {
+                  searchInput.focus();
+                }, 300); // Wait for animation
+              }
+            }
+            closeMobileSearch() {
+              this
+                .searchMobile
+                .classList
+                .remove("is-open");
+              this
+                .searchButton
+                .classList
+                .remove("is-active");
+            }
+            isMobileSearchOpen() {
+              return this
+                .searchMobile
+                .classList
+                .contains("is-open");
             }
             openMenu() {
               this
