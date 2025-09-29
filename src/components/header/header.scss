@@ -91,6 +91,17 @@
 
   &__nav-item {
     position: relative;
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 16px;
+      background: #333;
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   &__nav-link {
