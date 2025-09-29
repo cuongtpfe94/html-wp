@@ -1,24 +1,143 @@
-{% extends "layouts/base.njk" %}
-{% from "components/notification-list/notification-list.njk" import notificationList %}
-
-
-{# Import components #}
-{# from "components/header/header.njk" import header #}
-{# from "components/footer/footer.njk" import footer #}
-{# from "components/sidebar/sidebar.njk" import sidebar #}
-
-{% block title %}お知らせ投稿 - {{ site.title }}{% endblock %}
-
-{% block bodyClass %}admin-layout{% endblock %}
-
-{% block content %}
-  <div class="admin-content">
-    {{ notificationList(notifications) }}
-  </div>
-{% endblock %}
-
-{% block scripts %}
-  <script>
-    // Add any page-specific JavaScript here
-  </script>
-{% endblock %}
+{% from "components/header/header.njk" import header %}
+{% from "components/footer/footer.njk" import footer %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>
+      {% block title %}
+        {{ site.title }}
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="/css/footer/footer.css">
+    <link rel="stylesheet" href="/css/header/header.css"> {% block head %}{% endblock %}
+    </head>
+    <body
+      class="{% block bodyClass %}{% endblock %}">
+      {# Header #}
+      {{ header() }}
+      {# Main Content #}
+      <main style="padding: 2rem; min-height: 60vh; background-color: #ccc;"></main>
+      {# Footer #}
+      {{ footer() }}
+      {% block scripts %}
+        <script>
+          class HeaderComponent {
+            constructor() {
+              this.header = document.querySelector(".header");
+              this.menuToggle = document.querySelector(".header__menu-toggle");
+              this.drawer = document.querySelector(".header__drawer");
+              this.drawerOverlay = document.querySelector(".header__drawer-overlay");
+              this.drawerClose = document.querySelector(".header__drawer-close");
+              this.init();
+            }
+            init() {
+              if (!this.menuToggle || !this.drawer) 
+                return;
+              
+              this.bindEvents();
+            }
+            bindEvents() { // Toggle menu when hamburger button is clicked
+              this.menuToggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.toggleMenu();
+              });
+              // Close menu when overlay is clicked
+              if (this.drawerOverlay) {
+                this.drawerOverlay.addEventListener("click", () => {
+                  this.closeMenu();
+                });
+              }
+              // Close menu when close button is clicked
+              if (this.drawerClose) {
+                this.drawerClose.addEventListener("click", () => {
+                  this.closeMenu();
+                });
+              }
+              // Close menu when escape key is pressed
+              document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && this.isMenuOpen()) {
+                  this.closeMenu();
+                }
+              });
+              // Close menu when window is resized to desktop size
+              window.addEventListener("resize", () => {
+                if (window.innerWidth > 768 && this.isMenuOpen()) {
+                  this.closeMenu();
+                }
+              });
+              // Handle drawer links click (optional - for smooth closing)
+              const drawerLinks = document.querySelectorAll(".header__drawer-link");
+              drawerLinks.forEach((link) => {
+                link.addEventListener("click", () => { // Add small delay to allow navigation
+                  setTimeout(() => {
+                    this.closeMenu();
+                  }, 100);
+                });
+              });
+            }
+            toggleMenu() {
+              if (this.isMenuOpen()) {
+                this.closeMenu();
+              } else {
+                this.openMenu();
+              }
+            }
+            openMenu() {
+              this
+                .drawer
+                .classList
+                .add("is-open");
+              this
+                .menuToggle
+                .classList
+                .add("is-active");
+              // Prevent body scroll when menu is open
+              document
+                .body
+                .style
+                .overflow = "hidden";
+              // Focus management for accessibility
+              this.drawerClose ?. focus();
+              // Add aria-expanded for accessibility
+              this.menuToggle.setAttribute("aria-expanded", "true");
+            }
+            closeMenu() {
+              this
+                .drawer
+                .classList
+                .remove("is-open");
+              this
+                .menuToggle
+                .classList
+                .remove("is-active");
+              // Restore body scroll
+              document
+                .body
+                .style
+                .overflow = "";
+              // Return focus to menu toggle button
+              this.menuToggle.focus();
+              // Update aria-expanded for accessibility
+              this.menuToggle.setAttribute("aria-expanded", "false");
+            }
+            isMenuOpen() {
+              return this
+                .drawer
+                .classList
+                .contains("is-open");
+            }
+          }
+          // Initialize header component when DOM is loaded
+          document.addEventListener("DOMContentLoaded", () => {
+            new HeaderComponent();
+          });
+          // Export for potential module usage
+          if (typeof module !== "undefined" && module.exports) {
+            module.exports = HeaderComponent;
+          }
+        </script>
+      {% endblock %}
+    </body>
+  </html>
