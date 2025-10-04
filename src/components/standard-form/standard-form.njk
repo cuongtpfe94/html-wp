@@ -1,0 +1,180 @@
+{# Standard Form Component #}
+{% macro standardForm(data) %}
+  <div class="standard-form app-form">
+    <div class="standard-form__header">
+      <h1 class="standard-form__title">認定基準、試験方法書、申請型式一覧</h1>
+      <div class="standard-form__actions">
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">下書き保存</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">プレビュー</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">公開</span>
+        </button>
+      </div>
+    </div>
+    <div class="standard-form__content">
+      <div
+        class="standard-form__main">
+        {# Left Section - Product Categories #}
+        <div class="standard-form__left">
+          <h2 class="standard-form__section-title">商品分類</h2>
+          <div class="standard-form__list" id="category-list">
+            {% for category in data.categories %}
+              <div class="standard-form__item" data-category-id="{{ category.id }}">
+                <div class="standard-form__drag-handle">
+                  <span class="standard-form__drag-icon">≡</span>
+                </div>
+                <div class="standard-form__radio">
+                  <input type="radio" name="category" value="{{ category.id }}" id="category-{{ category.id }}" {% if category.selected %} checked {% endif %}>
+                    <label for="category-{{ category.id }}" class="standard-form__radio-label">
+                      {{ category.name }}
+                    </label>
+                  </div>
+                  <div class="standard-form__delete">
+                    <button type="button" class="standard-form__delete-btn" title="削除">🗑️</button>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="standard-form__add-item">
+              <input type="text" class="standard-form__add-input" placeholder="テキスト入力">
+                <button type="button" class="standard-form__add-btn">+</button>
+              </div>
+            </div>
+            {# Right Section - Product Items #}
+            <div class="standard-form__right">
+              <h2 class="standard-form__section-title" id="selected-category-title">玄関周り 品目</h2>
+              <div class="standard-form__list" id="item-list">
+                {% for item in data.selectedItems %}
+                  <div class="standard-form__item" data-item-id="{{ item.id }}">
+                    <div class="standard-form__drag-handle">
+                      <span class="standard-form__drag-icon">≡</span>
+                    </div>
+                    <div class="standard-form__radio">
+                      <input type="radio" name="item" value="{{ item.id }}" id="item-{{ item.id }}" {% if item.selected %} checked {% endif %}>
+                        <label for="item-{{ item.id }}" class="standard-form__radio-label">
+                          {{ item.name }}
+                        </label>
+                      </div>
+                      <div class="standard-form__delete">
+                        <button type="button" class="standard-form__delete-btn" title="削除">🗑️</button>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="standard-form__add-item">
+                  <input type="text" class="standard-form__add-input" placeholder="テキスト入力">
+                    <button type="button" class="standard-form__add-btn">+</button>
+                  </div>
+                  <div class="standard-form__instruction">
+                    <div class="standard-form__form-field">
+                      <label class="standard-form__label">注釈・注意書き</label>
+                      <textarea class="standard-form__textarea" placeholder="テキスト入力" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {# Bottom Section - Selected Item Details #}
+              <div class="standard-form__bottom">
+                <div class="standard-form__breadcrumb">
+                  <span id="breadcrumb-path">玄関周り > 玄関ドア</span>
+                </div>
+                <div class="standard-form__detail-form">
+                  <div class="standard-form__form-row">
+                    <div class="standard-form__form-field">
+                      <label class="standard-form__label">記号</label>
+                      <input type="text" class="standard-form__input" placeholder="テキスト入力"></div>
+                      <div class="standard-form__form-field">
+                        <div class="standard-form__radio-group">
+                          <input type="radio" name="type" value="general" id="type-general" checked>
+                            <label for="type-general" class="standard-form__radio-label">一般型</label>
+                            <input type="radio" name="type" value="proposal" id="type-proposal">
+                              <label for="type-proposal" class="standard-form__radio-label">自由提案型</label>
+                            </div>
+                          </div>
+                          <div class="standard-form__form-field">
+                            <label class="standard-form__checkbox-label checkbox-label">
+                              <input type="checkbox" class="standard-form__checkbox checkbox" checked>
+                                <span class="standard-form__checkbox-text checkbox-text">BL-bs部品</span>
+                              </label>
+                            </div>
+                            <div class="standard-form__form-field">
+                              <label class="standard-form__label">基準公表日</label>
+                              <div class="standard-form__date-wrapper">
+                                <input type="text" class="standard-form__input" placeholder="日付を入力"></div>
+                              </div>
+                            </div>
+                            <div
+                              class="standard-form__form-row">
+                              {# File upload with file selected #}
+                              <div class="standard-form__file-upload">
+                                <label class="standard-form__label">認定基準</label>
+                                <div class="standard-form__file-area standard-form__file-area--selected">
+                                  <div class="standard-form__file-icon">📄</div>
+                                  <span class="standard-form__file-text">PDFファイル</span>
+                                  <button type="button" class="standard-form__file-delete">🗑️</button>
+                                </div>
+                              </div>
+                              {# File upload without file (upload area) #}
+                              <div class="standard-form__file-upload">
+                                <label class="standard-form__label">試験方法書</label>
+                                <div class="standard-form__file-area standard-form__file-area--upload">
+                                  <input type="file" class="standard-form__file-input" id="file-upload-1" accept=".pdf,.doc,.docx">
+                                    <label for="file-upload-1" class="standard-form__file-upload-label">
+                                      <div class="standard-form__upload-icon">📁</div>
+                                      <span class="standard-form__upload-text">ドラッグ&ドロップ</span>
+                                    </label>
+                                    <button type="button" class="standard-form__file-delete">🗑️</button>
+                                  </div>
+                                </div>
+                                {# File upload with file selected #}
+                                <div class="standard-form__file-upload">
+                                  <label class="standard-form__label">チェックリスト</label>
+                                  <div class="standard-form__file-area standard-form__file-area--selected">
+                                    <div class="standard-form__file-icon">📄</div>
+                                    <span class="standard-form__file-text">Wordファイル</span>
+                                    <button type="button" class="standard-form__file-delete">🗑️</button>
+                                  </div>
+                                </div>
+                                {# File upload without file (upload area) #}
+                                <div class="standard-form__file-upload">
+                                  <label class="standard-form__label">申請型式</label>
+                                  <div class="standard-form__file-area standard-form__file-area--upload">
+                                    <input type="file" class="standard-form__file-input" id="file-upload-2" accept=".xls,.xlsx">
+                                      <label for="file-upload-2" class="standard-form__file-upload-label">
+                                        <div class="standard-form__upload-icon">📁</div>
+                                        <span class="standard-form__upload-text">ドラッグ&ドロップ</span>
+                                      </label>
+                                      <button type="button" class="standard-form__file-delete">🗑️</button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="standard-form__form-actions">
+                                  <button type="button" class="app-button app-button--dark app-button--large">
+                                    入力完了
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {# Footer #}
+                          <div class="standard-form__footer">
+                            <button class="button button--ghost button--small">
+                              <span class="text-default">下書き保存</span>
+                            </button>
+                            |
+                            <button class="button button--ghost button--small">
+                              <span class="text-default">プレビュー</span>
+                            </button>
+                            |
+                            <button class="button button--ghost button--small">
+                              <span class="text-default">公開</span>
+                            </button>
+                          </div>
+                        </div>
+                      {% endmacro %}

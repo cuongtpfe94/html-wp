@@ -1,0 +1,259 @@
+{# Classification Form Component #}
+{% macro classification(data) %}
+  <div class="classification-form app-form">
+    <div class="classification-form__header">
+      <h1 class="classification-form__title">認定基準、試験方法書、申請型式一覧</h1>
+      <div class="classification-form__actions">
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">下書き保存</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">プレビュー</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">公開</span>
+        </button>
+      </div>
+    </div>
+    <div class="classification-form__content">
+      <div
+        class="classification-form__main">
+        {# Left Section - Product Categories #}
+        <div class="classification-form__left">
+          <h2 class="classification-form__section-title">商品分類</h2>
+          <div class="classification-form__list" id="category-list">
+            {% for category in data.categories %}
+              <div class="classification-form__item" data-category-id="{{ category.id }}">
+                <div class="classification-form__drag-handle">
+                  <span class="classification-form__drag-icon">≡</span>
+                </div>
+                <div class="classification-form__radio">
+                  <input type="radio" name="category" value="{{ category.id }}" id="category-{{ category.id }}" {% if category.selected %} checked {% endif %}>
+                    <label for="category-{{ category.id }}" class="classification-form__radio-label">
+                      {{ category.name }}
+                    </label>
+                  </div>
+                  <div class="classification-form__delete">
+                    <button type="button" class="classification-form__delete-btn" title="削除">🗑️</button>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="classification-form__add-item">
+              <input type="text" class="classification-form__add-input" placeholder="テキスト入力">
+                <button type="button" class="classification-form__add-btn">+</button>
+              </div>
+            </div>
+            {# Right Section - Product Items #}
+            <div class="classification-form__right">
+              <h2 class="classification-form__section-title" id="selected-category-title">玄関周り 品目</h2>
+              <div class="classification-form__list" id="item-list">
+                {% for item in data.selectedItems %}
+                  <div class="classification-form__item" data-item-id="{{ item.id }}">
+                    <div class="classification-form__drag-handle">
+                      <span class="classification-form__drag-icon">≡</span>
+                    </div>
+                    <div class="classification-form__radio">
+                      <input type="radio" name="item" value="{{ item.id }}" id="item-{{ item.id }}" {% if item.selected %} checked {% endif %}>
+                        <label for="item-{{ item.id }}" class="classification-form__radio-label">
+                          {{ item.name }}
+                        </label>
+                      </div>
+                      <div class="classification-form__delete">
+                        <button type="button" class="classification-form__delete-btn" title="削除">🗑️</button>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="classification-form__add-item">
+                  <input type="text" class="classification-form__add-input" placeholder="テキスト入力">
+                    <button type="button" class="classification-form__add-btn">+</button>
+                  </div>
+                </div>
+              </div>
+              {# Bottom Section - Selected Item Details #}
+              <div class="classification-form__bottom">
+                <div class="classification-form__breadcrumb">
+                  <span id="breadcrumb-path">玄関周り > 玄関ドア</span>
+                </div>
+                <div class="classification-form__detail-form">
+                  <div>会社名</div>
+                  <div class="classification-form__table-container">
+                    <table class="classification-form__table">
+                      <tbody>
+                        {# Row 1 #}
+                        <tr class="classification-form__table-row">
+                          <td class="classification-form__table-cell classification-form__table-cell--drag">
+                            <div class="classification-form__drag-handle">
+                              <span class="classification-form__drag-icon">≡</span>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--company">
+                            <span class="classification-form__company-name">三和シャッター工業株式会社</span>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--files">
+                            <div class="classification-form__file-list">
+                              <div class="classification-form__file-item">
+                                <span class="classification-form__file-icon">📄</span>
+                                <span class="classification-form__file-name">20-110.pdf</span>
+                                <button type="button" class="classification-form__file-delete">🗑️</button>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--upload">
+                            <button type="button" class="classification-form__upload-btn">📁</button>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--delete">
+                            <button type="button" class="classification-form__row-delete">🗑️</button>
+                          </td>
+                        </tr>
+                        {# Row 2 #}
+                        <tr class="classification-form__table-row">
+                          <td class="classification-form__table-cell classification-form__table-cell--drag">
+                            <div class="classification-form__drag-handle">
+                              <span class="classification-form__drag-icon">≡</span>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--company">
+                            <span class="classification-form__company-name">日本フネン株式会社</span>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--files">
+                            <div class="classification-form__file-list">
+                              <div class="classification-form__file-item">
+                                <span class="classification-form__file-icon">📄</span>
+                                <span class="classification-form__file-name">20-100.pdf</span>
+                                <button type="button" class="classification-form__file-delete">🗑️</button>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--upload">
+                            <button type="button" class="classification-form__upload-btn">📁</button>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--delete">
+                            <button type="button" class="classification-form__row-delete">🗑️</button>
+                          </td>
+                        </tr>
+                        {# Row 3 #}
+                        <tr class="classification-form__table-row">
+                          <td class="classification-form__table-cell classification-form__table-cell--drag">
+                            <div class="classification-form__drag-handle">
+                              <span class="classification-form__drag-icon">≡</span>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--company">
+                            <span class="classification-form__company-name">BXルーテス株式会社</span>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--files">
+                            <div class="classification-form__file-list">
+                              <div class="classification-form__file-item">
+                                <span class="classification-form__file-icon">📄</span>
+                                <span class="classification-form__file-name">23-072.pdf</span>
+                                <button type="button" class="classification-form__file-delete">🗑️</button>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--upload">
+                            <button type="button" class="classification-form__upload-btn">📁</button>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--delete">
+                            <button type="button" class="classification-form__row-delete">🗑️</button>
+                          </td>
+                        </tr>
+                        {# Row 4 #}
+                        <tr class="classification-form__table-row">
+                          <td class="classification-form__table-cell classification-form__table-cell--drag">
+                            <div class="classification-form__drag-handle">
+                              <span class="classification-form__drag-icon">≡</span>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--company">
+                            <span class="classification-form__company-name">フジメタル株式会社</span>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--files">
+                            <div class="classification-form__file-list">
+                              <div class="classification-form__file-item">
+                                <span class="classification-form__file-icon">📄</span>
+                                <span class="classification-form__file-name">19-051.pdf</span>
+                                <button type="button" class="classification-form__file-delete">🗑️</button>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--upload">
+                            <button type="button" class="classification-form__upload-btn">📁</button>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--delete">
+                            <button type="button" class="classification-form__row-delete">🗑️</button>
+                          </td>
+                        </tr>
+                        {# Row 5 - Multiple files #}
+                        <tr class="classification-form__table-row">
+                          <td class="classification-form__table-cell classification-form__table-cell--drag">
+                            <div class="classification-form__drag-handle">
+                              <span class="classification-form__drag-icon">≡</span>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--company">
+                            <span class="classification-form__company-name">株式会社LIXIL</span>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--files">
+                            <div class="classification-form__file-list">
+                              <div class="classification-form__file-item">
+                                <span class="classification-form__file-icon">📄</span>
+                                <span class="classification-form__file-name">20-087.pdf</span>
+                                <button type="button" class="classification-form__file-delete">🗑️</button>
+                              </div>
+                              <div class="classification-form__file-item">
+                                <span class="classification-form__file-icon">📄</span>
+                                <span class="classification-form__file-name">21-194.pdf</span>
+                                <button type="button" class="classification-form__file-delete">🗑️</button>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--upload">
+                            <button type="button" class="classification-form__upload-btn">📁</button>
+                          </td>
+                          <td class="classification-form__table-cell classification-form__table-cell--delete">
+                            <button type="button" class="classification-form__row-delete">🗑️</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="classification-form__add-row">
+                    <div class="classification-form__add-row-container">
+                      <div class="classification-form__add-row-input">
+                        <input type="text" class="classification-form__add-company-input" placeholder="テキスト入力"></div>
+                        <div class="classification-form__add-row-upload">
+                          <div class="classification-form__upload-area">
+                            <input type="file" class="classification-form__file-input" id="add-row-file-upload" accept=".pdf" multiple>
+                              <label for="add-row-file-upload" class="classification-form__upload-label">
+                                <span class="classification-form__upload-icon">📁</span>
+                                <span class="classification-form__upload-text">PDFファイル</span>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="classification-form__add-row-button">
+                            <button type="button" class="classification-form__add-row-btn">+</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {# Footer #}
+                  <div class="classification-form__footer">
+                    <button class="button button--ghost button--small">
+                      <span class="text-default">下書き保存</span>
+                    </button>
+                    |
+                    <button class="button button--ghost button--small">
+                      <span class="text-default">プレビュー</span>
+                    </button>
+                    |
+                    <button class="button button--ghost button--small">
+                      <span class="text-default">公開</span>
+                    </button>
+                  </div>
+                </div>
+              {% endmacro %}

@@ -43,6 +43,7 @@ gulp.task("nunjucks", () => {
           footerData: require("./src/data/footer.json"),
           announcementData: require("./src/data/announcement-form.json"),
           topicData: require("./src/data/topic-form.json"),
+          standardFormData: require("./src/data/standard-form.json"),
         },
       })
     )
@@ -117,7 +118,11 @@ gulp.task("watch", () => {
 
   // Watch SCSS files
   gulp.watch(
-    ["src/scss/**/*.scss", "src/components/**/*.scss", "!src/components/banner-list/banner-list.scss"],
+    [
+      "src/scss/**/*.scss",
+      "src/components/**/*.scss",
+      "!src/components/banner-list/banner-list.scss",
+    ],
     gulp.series("styles")
   );
 
@@ -132,7 +137,10 @@ gulp.task("watch", () => {
 });
 
 // Update build task
-gulp.task("build", gulp.series("clean", "styles", "banner-styles", "nunjucks", "assets"));
+gulp.task(
+  "build",
+  gulp.series("clean", "styles", "banner-styles", "nunjucks", "assets")
+);
 
 // Default task remains the same
 gulp.task("default", gulp.series("build", "watch"));

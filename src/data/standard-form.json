@@ -1,0 +1,106 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "玄関周り",
+      "selected": true
+    },
+    {
+      "id": "2",
+      "name": "窓・手すり",
+      "selected": false
+    },
+    {
+      "id": "3",
+      "name": "インテリア",
+      "selected": false
+    },
+    {
+      "id": "4",
+      "name": "エクステリア",
+      "selected": false
+    },
+    {
+      "id": "5",
+      "name": "水まわり",
+      "selected": false
+    },
+    {
+      "id": "6",
+      "name": "給湯機",
+      "selected": false
+    },
+    {
+      "id": "7",
+      "name": "太陽エネルギー利用",
+      "selected": false
+    },
+    {
+      "id": "8",
+      "name": "暖冷房・換気・融雪",
+      "selected": false
+    },
+    {
+      "id": "9",
+      "name": "蓄電システム",
+      "selected": false
+    },
+    {
+      "id": "10",
+      "name": "給水・排水",
+      "selected": false
+    },
+    {
+      "id": "11",
+      "name": "テレビ・情報・防災機器",
+      "selected": false
+    },
+    {
+      "id": "12",
+      "name": "エレベーター",
+      "selected": false
+    },
+    {
+      "id": "13",
+      "name": "その他",
+      "selected": false
+    }
+  ],
+  "selectedItems": [
+    {
+      "id": "1",
+      "name": "玄関ドア",
+      "selected": true
+    },
+    {
+      "id": "2",
+      "name": "改修用玄関ドア",
+      "selected": false
+    },
+    {
+      "id": "3",
+      "name": "ドア・クローザ",
+      "selected": false
+    },
+    {
+      "id": "4",
+      "name": "玄関ドア用錠前",
+      "selected": false
+    },
+    {
+      "id": "5",
+      "name": "宅配ボックス",
+      "selected": false
+    },
+    {
+      "id": "6",
+      "name": "郵便受箱",
+      "selected": false
+    },
+    {
+      "id": "7",
+      "name": "プレスドア専用改修用扉",
+      "selected": false
+    }
+  ]
+}
