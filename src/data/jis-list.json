@@ -1,0 +1,235 @@
+{
+  "title": "JIS製品認証リスト",
+  "tabs": [
+    {
+      "name": "JIS製品認証リスト",
+      "number": "1",
+      "active": true
+    },
+    {
+      "name": "JIS認定契約指定リスト",
+      "number": "3",
+      "active": false
+    },
+    {
+      "name": "JIS認定取消しリスト",
+      "number": "",
+      "active": false
+    },
+    {
+      "name": "JIS認定一時停止リスト",
+      "number": "",
+      "active": false
+    }
+  ],
+  "dateLabel": "リストの更新日",
+  "dateFields": [
+    {
+      "label": "JIS製品認証リスト"
+    },
+    {
+      "label": "JIS認定契約指定リスト"
+    },
+    {
+      "label": "JIS認定取消しリスト"
+    },
+    {
+      "label": "JIS認定一時停止リスト"
+    }
+  ],
+  "statusFilters": [
+    {
+      "label": "認証",
+      "checked": true
+    },
+    {
+      "label": "終了",
+      "checked": true
+    },
+    {
+      "label": "取消",
+      "checked": true
+    },
+    {
+      "label": "停止",
+      "checked": true
+    }
+  ],
+  "tableHeaders": [
+    {
+      "label": "認証番号",
+      "size": "medium"
+    },
+    {
+      "label": "認証",
+      "size": "small"
+    },
+    {
+      "label": "認証契約者名(商号又は名称)",
+      "size": "xlarge"
+    },
+    {
+      "label": "JIS認証製品名等(製品の名称又は型式)",
+      "size": "xlarge"
+    },
+    {
+      "label": "認証日",
+      "size": "medium"
+    },
+    {
+      "label": "有効期限",
+      "size": "medium"
+    },
+    {
+      "label": "工場等の名称及び所在地",
+      "size": "xlarge"
+    }
+  ],
+  "tableData": [
+    {
+      "cells": [
+        {
+          "value": "BL-E00-001",
+          "link": true
+        },
+        {
+          "value": "認証"
+        },
+        {
+          "value": "株式会社サンプル"
+        },
+        {
+          "value": "玄関ドア製品 / SAMPLE-001"
+        },
+        {
+          "value": "2025/04/01"
+        },
+        {
+          "value": "2028/03/31"
+        },
+        {
+          "value": "東京工場 / 東京都千代田区"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "BL-E00-002",
+          "link": true
+        },
+        {
+          "value": "認証"
+        },
+        {
+          "value": "サンプル工業株式会社"
+        },
+        {
+          "value": "窓製品 / SAMPLE-002"
+        },
+        {
+          "value": "2025/04/15"
+        },
+        {
+          "value": "2028/04/14"
+        },
+        {
+          "value": "大阪工場 / 大阪府大阪市"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "BL-E00-003",
+          "link": true
+        },
+        {
+          "value": "終了"
+        },
+        {
+          "value": "株式会社テスト製作所"
+        },
+        {
+          "value": "外壁材 / TEST-003"
+        },
+        {
+          "value": "2025/03/10"
+        },
+        {
+          "value": "2028/03/09"
+        },
+        {
+          "value": "名古屋工場 / 愛知県名古屋市"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "BL-E00-004",
+          "link": true
+        },
+        {
+          "value": "認証"
+        },
+        {
+          "value": "デモ建材株式会社"
+        },
+        {
+          "value": "屋根材 / DEMO-004"
+        },
+        {
+          "value": "2025/05/01"
+        },
+        {
+          "value": "2028/04/30"
+        },
+        {
+          "value": "福岡工場 / 福岡県福岡市"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "BL-E00-005",
+          "link": true
+        },
+        {
+          "value": "認証"
+        },
+        {
+          "value": "株式会社エグゼクティブ建材"
+        },
+        {
+          "value": "フローリング / EXEC-005"
+        },
+        {
+          "value": "2025/04/20"
+        },
+        {
+          "value": "2028/04/19"
+        },
+        {
+          "value": "札幌工場 / 北海道札幌市"
+        }
+      ]
+    }
+  ],
+  "listOptions": [
+    {
+      "value": "list1",
+      "label": "JIS製品認証リスト"
+    },
+    {
+      "value": "list2",
+      "label": "JIS認定契約指定リスト"
+    },
+    {
+      "value": "list3",
+      "label": "JIS認定取消しリスト"
+    }
+  ]
+}
+

@@ -1,0 +1,185 @@
+{# JIS Product Certification List Component #}
+{% macro jisList(data) %}
+  <div class="jis-list app-form">
+    <div class="jis-list__header">
+      <h1 class="jis-list__title">{{ data.title }}</h1>
+      <div class="jis-list__actions">
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">下書き保存</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">プレビュー</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">公開</span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="jis-list__content">
+      {# Date Filter Section #}
+      <div class="jis-list__date-filter">
+        {% for dateField in data.dateFields %}
+          <div class="jis-list__date-item">
+            <label class="form-label">{{ dateField.label }}</label>
+            <div class="jis-list__date-inputs">
+              <div class="jis-list__date-group">
+                <input type="text" class="form-input form-input--date" placeholder="日付を入力">
+                  <span class="jis-list__date-icon">📅</span>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {# Status Checkboxes #}
+        <div class="jis-list__status-filter">
+          <div class="jis-list__status-filter-group">
+            <div class="form-checkboxes">
+              {% for status in data.statusFilters %}
+                <label class="checkbox-label">
+                  <input type="checkbox" class="checkbox" {% if status.checked %} checked {% endif %}>
+                    <span class="checkbox-text">{{ status.label }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+            {# Search Bar #}
+            <div class="jis-list__search">
+              <div class="jis-list__search-wrapper">
+                <div class="jis-list__search-group">
+                  <input type="text" class="form-input jis-list__search-input" placeholder="テキスト検索">
+                    <button class="jis-list__search-btn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 46 46" fill="none">
+                        <path
+                          d="M44.75 41.9299L32.1101 29.4499C34.6101 26.3999 36.1201 22.4999 36.1201 18.2599C36.1201 8.52989 28.2 0.609863 18.47
+                            0.609863C8.73997 0.609863 0.820068 8.52989 0.820068 18.2599C0.820068 27.9899 8.73997 35.9099 18.47 35.9099C22.63 35.9099
+                            26.46 34.4599 29.48 32.0399L42.1599 44.5599C42.5199 44.9199 42.99 45.0899 43.46 45.0899C43.93 45.0899 44.42 44.9099 44.78
+                            44.5399C45.5 43.8099 45.49 42.6399 44.76 41.9199L44.75 41.9299ZM4.51001 18.2599C4.51001 10.5699 10.77 4.30988 18.46
+                            4.30988C26.15 4.30988 32.4099 10.5699 32.4099 18.2599C32.4099 25.9499 26.15 32.2099 18.46 32.2099C10.77 32.2099 4.51001
+                            25.9499 4.51001 18.2599Z"
+                          fill="#333333"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <button class="app-button app-button--dark app-button--small jis-list__add-btn">+</button>
+                </div>
+              </div>
+            </div>
+            {# Main Table Section #}
+            <div class="jis-list__table-wrapper">
+              <table class="jis-list__table">
+                <thead>
+                  <tr class="jis-list__table-header">
+                    {% for header in data.tableHeaders %}
+                      <th class="jis-list__th jis-list__th--{{ header.size }}">{{ header.label }}</th>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in data.tableData %}
+                    <tr class="jis-list__table-row {% if loop.index % 2 == 0 %}jis-list__table-row--even{% endif %}">
+                      {% for cell in row.cells %}
+                        <td class="jis-list__td {% if cell.link %}jis-list__td--link{% endif %}">
+                          {% if cell.link %}
+                            <a href="#" class="jis-list__link">{{ cell.value }}</a>
+                          {% else %}
+                            {{ cell.value }}
+                          {% endif %}
+                        </td>
+                      {% endfor %}
+                      <td class="jis-list__td jis-list__td--actions">
+                        <button class="jis-list__icon-btn" title="編集">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M11.5 1.5L14.5 4.5L5 14H2V11L11.5 1.5Z" stroke="currentColor" stroke-width="1.5"/>
+                          </svg>
+                        </button>
+                        <button class="jis-list__icon-btn" title="削除">🗑️</button>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {# Bottom Filter Section #}
+            <div class="jis-list__bottom-filters">
+              <div class="jis-list__filter-row">
+                <div class="jis-list__filter-group">
+                  <label class="form-label">認証契約者名など</label>
+                  <input type="text" class="form-input" placeholder="テキスト入力"></div>
+                  <div class="jis-list__filter-group">
+                    <label class="form-label">掲示番号</label>
+                    <div class="jis-list__select-with-btn">
+                      <div class="form-select-wrapper">
+                        <select class="form-select">
+                          {% for option in data.listOptions %}
+                            <option value="{{ option.value }}">{{ option.label }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      <button class="app-button app-button--dark app-button--small">リスト選択</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="jis-list__filter-row">
+                  <div class="jis-list__filter-group jis-list__filter-group--wide">
+                    <label class="form-label">認証契約を締結した期日(認証日)</label>
+                    <div class="jis-list__date-range">
+                      <input type="text" class="form-input form-input--date" placeholder="日付を入力">
+                        <span class="jis-list__date-icon">📅</span>
+                      </div>
+                    </div>
+                    <div class="jis-list__filter-group jis-list__filter-group--wide">
+                      <label class="form-label">認証取消を終了した期日</label>
+                      <div class="jis-list__date-range">
+                        <input type="text" class="form-input form-input--date" placeholder="日付を入力">
+                          <span class="jis-list__date-icon">📅</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jis-list__filter-row">
+                      <div class="jis-list__filter-group jis-list__filter-group--wide">
+                        <label class="form-label">掲示番号</label>
+                        <input type="text" class="form-input" placeholder="テキスト入力"></div>
+                        <div class="jis-list__filter-group jis-list__filter-group--wide">
+                          <label class="form-label">認定を取消した日</label>
+                          <div class="jis-list__date-range">
+                            <input type="text" class="form-input form-input--date" placeholder="日付を入力">
+                              <span class="jis-list__date-icon">📅</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="jis-list__filter-row">
+                          <div class="jis-list__filter-group jis-list__filter-group--wide">
+                            <label class="form-label">認証取消者名など全般</label>
+                            <input type="text" class="form-input" placeholder="テキスト入力"></div>
+                            <div class="jis-list__filter-group jis-list__filter-group--wide">
+                              <label class="form-label">認定を一時停止した日</label>
+                              <div class="jis-list__date-range">
+                                <input type="text" class="form-input form-input--date" placeholder="日付を入力">
+                                  <span class="jis-list__date-icon">📅</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="jis-list__filter-actions">
+                              <button class="app-button app-button--dark app-button--large">リスト反映</button>
+                            </div>
+                          </div>
+                        </div>
+                        {# Footer #}
+                        <div class="jis-list__footer">
+                          <button class="app-button app-button--ghost app-button--small">
+                            <span class="text-default">下書き保存</span>
+                          </button>
+                          |
+                          <button class="app-button app-button--ghost app-button--small">
+                            <span class="text-default">プレビュー</span>
+                          </button>
+                          |
+                          <button class="app-button app-button--ghost app-button--small">
+                            <span class="text-default">公開</span>
+                          </button>
+                        </div>
+                      </div>
+                    {% endmacro %}

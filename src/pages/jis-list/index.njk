@@ -1,0 +1,39 @@
+{% extends "layouts/base.njk" %}
+{% from "components/jis-list/jis-list.njk" import jisList %}
+{% block title %}JIS製品認証リスト - {{ site.title }}
+{% endblock %}
+{% block bodyClass %}admin-layout{% endblock %}
+{% block content %}
+  <div class="admin-content">
+    {{ jisList(jisListData) }}
+  </div>
+{% endblock %}
+{% block scripts %}
+  <script>
+    // Tab switching functionality
+    document.querySelectorAll('.jis-list__tab').forEach(tab => {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.jis-list__tab').forEach(t => t.classList.remove('jis-list__tab--active'));
+        this.classList.add('jis-list__tab--active');
+      });
+    });
+    // Search functionality
+    const searchInput = document.querySelector('.jis-list__search-input');
+    const searchBtn = document.querySelector('.jis-list__search-btn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', function () {
+        const searchValue = searchInput.value;
+        console.log('Searching for:', searchValue);
+        // Add search logic here
+      });
+    }
+    // Filter functionality
+    const filterBtn = document.querySelector('.jis-list__filter-actions .app-button');
+    if (filterBtn) {
+      filterBtn.addEventListener('click', function () {
+        console.log('Applying filters...');
+        // Add filter logic here
+      });
+    }
+  </script>
+{% endblock %}
