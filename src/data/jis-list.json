@@ -57,163 +57,271 @@
   ],
   "tableHeaders": [
     {
+      "label": "",
+      "size": "xsmall",
+      "sortable": false
+    },
+    {
       "label": "認証番号",
-      "size": "medium"
+      "size": "medium",
+      "sortable": false
     },
     {
-      "label": "認証",
-      "size": "small"
+      "label": "実名等",
+      "size": "medium",
+      "sortable": true
     },
     {
-      "label": "認証契約者名(商号又は名称)",
-      "size": "xlarge"
+      "label": "所得又は公開(期間含む)",
+      "size": "medium",
+      "sortable": true
     },
     {
-      "label": "JIS認証製品名等(製品の名称又は型式)",
-      "size": "xlarge"
+      "label": "JIS 規格番号 製品名称",
+      "size": "large",
+      "sortable": true
     },
     {
-      "label": "認証日",
-      "size": "medium"
+      "label": "認証・一時停止 認定を取消した期日",
+      "size": "large",
+      "sortable": true
     },
     {
-      "label": "有効期限",
-      "size": "medium"
+      "label": "認証契約を締結した期日(認証日)",
+      "size": "medium",
+      "sortable": true
     },
     {
-      "label": "工場等の名称及び所在地",
-      "size": "xlarge"
+      "label": "認証契約を終了した期日",
+      "size": "medium",
+      "sortable": true
+    },
+    {
+      "label": "認証取得者の氏名又は名称",
+      "size": "large",
+      "sortable": true
+    },
+    {
+      "label": "掲示番号",
+      "size": "medium",
+      "sortable": true
+    },
+    {
+      "label": "",
+      "size": "actions",
+      "sortable": false,
+      "colspan": 2
     }
   ],
   "tableData": [
     {
       "cells": [
-        {
-          "value": "BL-E00-001",
-          "link": true
-        },
-        {
-          "value": "認証"
-        },
-        {
-          "value": "株式会社サンプル"
-        },
-        {
-          "value": "玄関ドア製品 / SAMPLE-001"
-        },
-        {
-          "value": "2025/04/01"
-        },
-        {
-          "value": "2028/03/31"
-        },
-        {
-          "value": "東京工場 / 東京都千代田区"
-        }
+        { "value": "BL-E70047001", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "住宅の品質確保の促進等に関する法律" },
+        { "value": "" },
+        { "value": "令和7年7月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0907001.pdf" }
       ]
     },
     {
       "cells": [
-        {
-          "value": "BL-E00-002",
-          "link": true
-        },
-        {
-          "value": "認証"
-        },
-        {
-          "value": "サンプル工業株式会社"
-        },
-        {
-          "value": "窓製品 / SAMPLE-002"
-        },
-        {
-          "value": "2025/04/15"
-        },
-        {
-          "value": "2028/04/14"
-        },
-        {
-          "value": "大阪工場 / 大阪府大阪市"
-        }
+        { "value": "BL-E70047002", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "天然木床材等の品質管理" },
+        { "value": "" },
+        { "value": "令和7年7月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
       ]
     },
     {
       "cells": [
-        {
-          "value": "BL-E00-003",
-          "link": true
-        },
-        {
-          "value": "終了"
-        },
-        {
-          "value": "株式会社テスト製作所"
-        },
-        {
-          "value": "外壁材 / TEST-003"
-        },
-        {
-          "value": "2025/03/10"
-        },
-        {
-          "value": "2028/03/09"
-        },
-        {
-          "value": "名古屋工場 / 愛知県名古屋市"
-        }
+        { "value": "BL-E70047003", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "住宅の品質確保の促進等に関する法律" },
+        { "value": "" },
+        { "value": "令和7年7月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
       ]
     },
     {
       "cells": [
-        {
-          "value": "BL-E00-004",
-          "link": true
-        },
-        {
-          "value": "認証"
-        },
-        {
-          "value": "デモ建材株式会社"
-        },
-        {
-          "value": "屋根材 / DEMO-004"
-        },
-        {
-          "value": "2025/05/01"
-        },
-        {
-          "value": "2028/04/30"
-        },
-        {
-          "value": "福岡工場 / 福岡県福岡市"
-        }
+        { "value": "BL-E70047004", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "住宅と歩道との間の構造" },
+        { "value": "" },
+        { "value": "令和7年7月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
       ]
     },
     {
       "cells": [
-        {
-          "value": "BL-E00-005",
-          "link": true
-        },
-        {
-          "value": "認証"
-        },
-        {
-          "value": "株式会社エグゼクティブ建材"
-        },
-        {
-          "value": "フローリング / EXEC-005"
-        },
-        {
-          "value": "2025/04/20"
-        },
-        {
-          "value": "2028/04/19"
-        },
-        {
-          "value": "札幌工場 / 北海道札幌市"
-        }
+        { "value": "BL-E70047005", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "国土交通省住宅局建築指導課" },
+        { "value": "" },
+        { "value": "令和7年7月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E70047006", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "住宅と歩道との間の改修等" },
+        { "value": "" },
+        { "value": "令和7年7月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E70047007", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "住宅の品質確保の促進等に関する法律" },
+        { "value": "" },
+        { "value": "令和7年7月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E40047008", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年4月1日～" },
+        { "value": "便器の機能と器具" },
+        { "value": "" },
+        { "value": "令和7年4月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E40047009", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年4月1日～" },
+        { "value": "令和の機能改修計画" },
+        { "value": "" },
+        { "value": "令和7年4月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E40047010", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年4月1日～" },
+        { "value": "国土交通省が定める基準" },
+        { "value": "" },
+        { "value": "令和7年4月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E30047011", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年3月1日～" },
+        { "value": "新機能交付等の業務" },
+        { "value": "" },
+        { "value": "令和7年3月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E30047012", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年3月1日～" },
+        { "value": "税制措置の適用" },
+        { "value": "" },
+        { "value": "令和7年3月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E70047013", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "まちなかプラザが展開する空間" },
+        { "value": "" },
+        { "value": "令和7年7月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E70047014", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "まちなかプラザが展開する空間に関する基準" },
+        { "value": "" },
+        { "value": "令和5年5月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
+      ]
+    },
+    {
+      "cells": [
+        { "value": "BL-E70047015", "link": true },
+        { "value": "承認工事等適用範囲" },
+        { "value": "2025年7月1日～" },
+        { "value": "建築基準法に基づく検査業務" },
+        { "value": "" },
+        { "value": "令和5年5月1日" },
+        { "value": "" },
+        { "value": "マック" },
+        { "value": "マック" },
+        { "value": "01BL0000000.pdf" }
       ]
     }
   ],
@@ -232,4 +340,3 @@
     }
   ]
 }
-

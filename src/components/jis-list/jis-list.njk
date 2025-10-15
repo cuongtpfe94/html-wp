@@ -73,29 +73,77 @@
                 <thead>
                   <tr class="jis-list__table-header">
                     {% for header in data.tableHeaders %}
-                      <th class="jis-list__th jis-list__th--{{ header.size }}">{{ header.label }}</th>
+                      <th class="jis-list__th jis-list__th--{{ header.size }}" {% if header.colspan %} colspan="{{ header.colspan }}" {% endif %}>
+                        <div class="jis-list__th-content">
+                          <span>{{ header.label }}</span>
+                          {% if header.sortable %}
+                            <span class="jis-list__sort-icon">
+                              <svg width="16" height="16" viewBox="0 0 12 12" fill="none">
+                                <path d="M6 3L9 6H3L6 3Z" fill="#ccc"/>
+                                <path d="M6 9L3 6H9L6 9Z" fill="#000"/>
+                              </svg>
+                            </span>
+                          {% endif %}
+                        </div>
+                      </th>
                     {% endfor %}
                   </tr>
                 </thead>
                 <tbody>
                   {% for row in data.tableData %}
                     <tr class="jis-list__table-row {% if loop.index % 2 == 0 %}jis-list__table-row--even{% endif %}">
+                      <td class="jis-list__td jis-list__td--index">{{ loop.index }}</td>
                       {% for cell in row.cells %}
-                        <td class="jis-list__td {% if cell.link %}jis-list__td--link{% endif %}">
-                          {% if cell.link %}
-                            <a href="#" class="jis-list__link">{{ cell.value }}</a>
-                          {% else %}
-                            {{ cell.value }}
-                          {% endif %}
-                        </td>
+                        {% if loop.last %}
+                          {# PDF File Column #}
+                          <td class="jis-list__td jis-list__td--pdf">
+                            <div class="jis-list__pdf-container">
+                              <div class="jis-list__pdf-wrapper">
+                                <svg class="jis-list__pdf-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <path d="M9 1H3C2.4 1 2 1.4 2 2V14C2 14.6 2.4 15 3 15H13C13.6 15 14 14.6 14 14V6L9 1Z" fill="#D32F2F"/>
+                                  <path d="M9 1V6H14" fill="#F44336"/>
+                                  <text x="4" y="11" font-size="4" fill="white" font-weight="bold">PDF</text>
+                                </svg>
+                                <a href="#" class="jis-list__pdf-link">{{ cell.value }}</a>
+                                <button class="jis-list__delete-icon" title="削除">
+                                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path
+                                      d="M3 4H13M5 4V3C5 2.4 5.4 2 6 2H10C10.6 2 11 2.4 11 3V4M6 7V11M10 7V11M4 4L4.5 13C4.5 13.6 5 14 5.5 14H10.5C11 14 11.5
+                                        13.6 11.5 13L12 4H4Z"
+                                      stroke="#666"
+                                      stroke-width="1.2"
+                                      stroke-linecap="round"/>
+                                  </svg>
+                                </button>
+                              </div>
+                              <div class="jis-list__pdf-upload">
+                                <button class="jis-list__upload-icon" title="アップロード">
+                                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 11V3M8 3L5 6M8 3L11 6" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 13H13" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+                                  </svg>
+                                </button>
+                                <span class="jis-list__pdf-label">PDFファイル</span>
+                              </div>
+                            </div>
+                          </td>
+                        {% else %}
+                          <td class="jis-list__td {% if cell.link %}jis-list__td--link{% endif %}">
+                            {% if cell.link %}
+                              <a href="#" class="jis-list__link">{{ cell.value }}</a>
+                            {% else %}
+                              {{ cell.value }}
+                            {% endif %}
+                          </td>
+                        {% endif %}
                       {% endfor %}
                       <td class="jis-list__td jis-list__td--actions">
-                        <button class="jis-list__icon-btn" title="編集">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M11.5 1.5L14.5 4.5L5 14H2V11L11.5 1.5Z" stroke="currentColor" stroke-width="1.5"/>
-                          </svg>
+                        <button class="jis-list__action-btn jis-list__action-btn--edit" title="編集">
+                          編集
                         </button>
-                        <button class="jis-list__icon-btn" title="削除">🗑️</button>
+                        <button class="jis-list__action-btn jis-list__action-btn--delete" title="削除">
+                          削除
+                        </button>
                       </td>
                     </tr>
                   {% endfor %}
@@ -104,12 +152,12 @@
             </div>
             {# Bottom Filter Section #}
             <div class="jis-list__bottom-filters">
-              <div class="jis-list__filter-row">
+              <div class="jis-list__filter-row jis-list__filter-row--top">
                 <div class="jis-list__filter-group">
-                  <label class="form-label">認証契約者名など</label>
+                  <label class="form-label">認証番号</label>
                   <input type="text" class="form-input" placeholder="テキスト入力"></div>
                   <div class="jis-list__filter-group">
-                    <label class="form-label">掲示番号</label>
+                    <label class="form-label">リスト選択</label>
                     <div class="jis-list__select-with-btn">
                       <div class="form-select-wrapper">
                         <select class="form-select">
@@ -118,11 +166,10 @@
                           {% endfor %}
                         </select>
                       </div>
-                      <button class="app-button app-button--dark app-button--small">リスト選択</button>
                     </div>
                   </div>
                 </div>
-                <div class="jis-list__filter-row">
+                <div class="jis-list__filter-row jis-list__filter-row--bottom">
                   <div class="jis-list__filter-group jis-list__filter-group--wide">
                     <label class="form-label">認証契約を締結した期日(認証日)</label>
                     <div class="jis-list__date-range">
@@ -131,55 +178,56 @@
                       </div>
                     </div>
                     <div class="jis-list__filter-group jis-list__filter-group--wide">
-                      <label class="form-label">認証取消を終了した期日</label>
+                      <label class="form-label">認証契約を終了した期日</label>
                       <div class="jis-list__date-range">
                         <input type="text" class="form-input form-input--date" placeholder="日付を入力">
                           <span class="jis-list__date-icon">📅</span>
                         </div>
                       </div>
-                    </div>
-                    <div class="jis-list__filter-row">
                       <div class="jis-list__filter-group jis-list__filter-group--wide">
-                        <label class="form-label">掲示番号</label>
-                        <input type="text" class="form-input" placeholder="テキスト入力"></div>
+                        <label class="form-label">認定を取消した日</label>
+                        <div class="jis-list__date-range">
+                          <input type="text" class="form-input form-input--date" placeholder="日付を入力">
+                            <span class="jis-list__date-icon">📅</span>
+                          </div>
+                        </div>
                         <div class="jis-list__filter-group jis-list__filter-group--wide">
-                          <label class="form-label">認定を取消した日</label>
+                          <label class="form-label">認証を一時停止請求した日</label>
                           <div class="jis-list__date-range">
                             <input type="text" class="form-input form-input--date" placeholder="日付を入力">
                               <span class="jis-list__date-icon">📅</span>
                             </div>
                           </div>
                         </div>
-                        <div class="jis-list__filter-row">
+                        <div class="jis-list__filter-row jis-list__filter-row--bottom">
                           <div class="jis-list__filter-group jis-list__filter-group--wide">
-                            <label class="form-label">認証取消者名など全般</label>
+                            <label class="form-label">認証取得者の氏名又は名称</label>
                             <input type="text" class="form-input" placeholder="テキスト入力"></div>
                             <div class="jis-list__filter-group jis-list__filter-group--wide">
-                              <label class="form-label">認定を一時停止した日</label>
-                              <div class="jis-list__date-range">
-                                <input type="text" class="form-input form-input--date" placeholder="日付を入力">
-                                  <span class="jis-list__date-icon">📅</span>
+                              <label class="form-label">掲示番号</label>
+                              <input type="text" class="form-input" placeholder="テキスト入力"></div>
+                              <div class="jis-list__filter-group jis-list__filter-group--wide">
+                                <label class="form-label">掲示番号</label>
+                                <input type="text" class="form-input" placeholder="テキスト入力"></div>
+                                <div class="jis-list__filter-group jis-list__filter-group--wide">
+                                  <div class="jis-list__filter-actions">
+                                    <button class="app-button app-button--dark app-button--large">リスト反映</button>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                            <div class="jis-list__filter-actions">
-                              <button class="app-button app-button--dark app-button--large">リスト反映</button>
+                            {# Footer #}
+                            <div class="jis-list__footer">
+                              <button class="app-button app-button--ghost app-button--small">
+                                <span class="text-default">下書き保存</span>
+                              </button>
+                              |
+                              <button class="app-button app-button--ghost app-button--small">
+                                <span class="text-default">プレビュー</span>
+                              </button>
+                              |
+                              <button class="app-button app-button--ghost app-button--small">
+                                <span class="text-default">公開</span>
+                              </button>
                             </div>
-                          </div>
-                        </div>
-                        {# Footer #}
-                        <div class="jis-list__footer">
-                          <button class="app-button app-button--ghost app-button--small">
-                            <span class="text-default">下書き保存</span>
-                          </button>
-                          |
-                          <button class="app-button app-button--ghost app-button--small">
-                            <span class="text-default">プレビュー</span>
-                          </button>
-                          |
-                          <button class="app-button app-button--ghost app-button--small">
-                            <span class="text-default">公開</span>
-                          </button>
-                        </div>
-                      </div>
-                    {% endmacro %}
+                          {% endmacro %}
