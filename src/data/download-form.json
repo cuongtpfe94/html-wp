@@ -1,0 +1,115 @@
+{
+  "title": "認定申請書類ダウンロード",
+  "categories": [
+    {
+      "value": "new",
+      "label": "新規申請",
+      "selected": true
+    },
+    {
+      "value": "renewal",
+      "label": "更新申請",
+      "selected": false
+    },
+    {
+      "value": "change",
+      "label": "変更申請",
+      "selected": false
+    }
+  ],
+  "leftItems": [
+    {
+      "id": "1",
+      "number": "1",
+      "title": "優良住宅部品認定申請書",
+      "fileName": ""
+    },
+    {
+      "id": "2",
+      "number": "1",
+      "title": "自由提案型優良住宅部品認定申請書",
+      "fileName": ""
+    },
+    {
+      "id": "4",
+      "number": "4",
+      "title": "申請証拠書類(企業・組織・認証)",
+      "fileName": ""
+    },
+    {
+      "id": "5",
+      "number": "5(4)",
+      "title": "ＢＬ部品表示・管理体制明細書",
+      "fileName": ""
+    },
+    {
+      "id": "6",
+      "number": "5(5)",
+      "title": "機器設計工場の出荷検査態様書",
+      "fileName": ""
+    },
+    {
+      "id": "7",
+      "number": "6",
+      "title": "ＯＥＭ一括申請に係る相手先ブランドの概要",
+      "fileName": ""
+    },
+    {
+      "id": "8",
+      "number": "7",
+      "title": "ＯＥＭ供給に関する証明書",
+      "fileName": ""
+    },
+    {
+      "id": "9",
+      "number": "8(1)",
+      "title": "ＢＬ認定書等違反確認日チェックリスト",
+      "fileName": ""
+    }
+  ],
+  "rightItems": [
+    {
+      "id": "10",
+      "number": "8(1)",
+      "title": "申請型式一覧",
+      "fileName": ""
+    },
+    {
+      "id": "11",
+      "number": "8(2)",
+      "title": "証明書明細書",
+      "fileName": ""
+    },
+    {
+      "id": "12",
+      "number": "8(3)3",
+      "title": "証明品質説明書",
+      "fileName": ""
+    },
+    {
+      "id": "13",
+      "number": "8(3)3",
+      "title": "証明品質説明書",
+      "fileName": ""
+    },
+    {
+      "id": "14",
+      "number": "9(1)",
+      "title": "委任状",
+      "fileName": ""
+    },
+    {
+      "id": "15",
+      "number": "",
+      "title": "書類一括ダウンロード",
+      "fileName": ""
+    },
+    {
+      "id": "16",
+      "number": "",
+      "title": "電子データ収納ファイル(申請書用) (zip)",
+      "fileName": ""
+    }
+  ]
+}
+

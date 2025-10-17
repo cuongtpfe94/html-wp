@@ -1,0 +1,127 @@
+{# Download Form Component #}
+{% macro downloadForm(data) %}
+  <div
+    class="download-form app-form">
+    {# Header #}
+    <div class="download-form__header">
+      <h1 class="download-form__title">{{ data.title }}</h1>
+      <div class="download-form__actions">
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">下書き保存</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">プレビュー</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">公開</span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="download-form__content">
+      {# Category Select #}
+      <div class="download-form__category">
+        <label class="form-label">リスト分類</label>
+        <div class="form-select-wrapper download-form__select-wrapper">
+          <select class="form-select download-form__select">
+            {% for category in data.categories %}
+              <option value="{{ category.value }}" {% if category.selected %} selected {% endif %}>
+                {{ category.label }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      {# Two Column Lists #}
+      <div
+        class="download-form__lists">
+        {# Left Column #}
+        <div class="download-form__column download-form__column--left">
+          {% for item in data.leftItems %}
+            <div class="download-form__item">
+              <div class="download-form__item-header">
+                <span class="download-form__item-number">{{ item.number }}</span>
+                <span class="download-form__item-title">{{ item.title }}</span>
+              </div>
+              <div class="download-form__item-actions">
+                <div class="download-form__file-input-wrapper">
+                  <input type="file" class="download-form__file-input" id="file-{{ item.id }}" accept=".pdf,.doc,.docx">
+                    <label for="file-{{ item.id }}" class="download-form__file-label">
+                      {% if item.fileName %}
+                        <span class="download-form__file-name">{{ item.fileName }}</span>
+                      {% else %}
+                        <div class="download-form__file-placeholder-wrapper">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 11V3M8 3L5 6M8 3L11 6" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 13H13" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+                          </svg>
+                          <span class="download-form__file-placeholder">ファイル名</span>
+                        </div>
+                      {% endif %}
+                    </label>
+                  </div>
+                  <button class="app-button app-button--dark app-button--small download-form__select-btn">
+                    ファイル選択
+                  </button>
+                  <button class="app-button app-button--dark app-button--small download-form__delete-btn">
+                    削除
+                  </button>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          {# Right Column #}
+          <div class="download-form__column download-form__column--right">
+            {% for item in data.rightItems %}
+              <div class="download-form__item">
+                <div class="download-form__item-header">
+                  <span class="download-form__item-number">{{ item.number }}</span>
+                  <span class="download-form__item-title">{{ item.title }}</span>
+                </div>
+                <div class="download-form__item-actions">
+                  <div class="download-form__file-input-wrapper">
+                    <input type="file" class="download-form__file-input" id="file-{{ item.id }}" accept=".pdf,.doc,.docx">
+                      <label for="file-{{ item.id }}" class="download-form__file-label">
+                        {% if item.fileName %}
+                          <span class="download-form__file-name">{{ item.fileName }}</span>
+                        {% else %}
+                          <div class="download-form__file-placeholder-wrapper">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M8 11V3M8 3L5 6M8 3L11 6" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M3 13H13" stroke="#999" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span class="download-form__file-placeholder">ファイル名</span>
+                          </div>
+                        {% endif %}
+                      </label>
+                    </div>
+                    <button class="app-button app-button--dark app-button--small download-form__select-btn">
+                      ファイル選択
+                    </button>
+                    <button class="app-button app-button--dark app-button--small download-form__delete-btn">
+                      削除
+                    </button>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {# Footer #}
+        <div class="download-form__footer">
+          <button class="app-button app-button--ghost app-button--small">
+            <span class="text-default">下書き保存</span>
+          </button>
+          |
+          <button class="app-button app-button--ghost app-button--small">
+            <span class="text-default">プレビュー</span>
+          </button>
+          |
+          <button class="app-button app-button--ghost app-button--small">
+            <span class="text-default">公開</span>
+          </button>
+        </div>
+      </div>
+    {% endmacro %}

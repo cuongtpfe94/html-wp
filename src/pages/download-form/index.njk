@@ -1,0 +1,66 @@
+{% extends "layouts/base.njk" %}
+{% from "components/download-form/download-form.njk" import downloadForm %}
+{% block title %}認定申請書類ダウンロード - {{ site.title }}
+{% endblock %}
+{% block bodyClass %}admin-layout{% endblock %}
+{% block content %}
+  <div class="admin-content">
+    {{ downloadForm(downloadFormData) }}
+  </div>
+{% endblock %}
+{% block scripts %}
+  <script>
+    // File selection functionality
+    document.querySelectorAll('.download-form__select-btn').forEach((btn, index) => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const item = this.closest('.download-form__item');
+        const fileInput = item.querySelector('.download-form__file-input');
+        if (fileInput) {
+          fileInput.click();
+        }
+      });
+    });
+    // Handle file selection
+    document.querySelectorAll('.download-form__file-input').forEach(input => {
+      input.addEventListener('change', function () {
+        const label = this.nextElementSibling;
+        const fileName = this.files[0] ?. name;
+        if (fileName) {
+          const placeholder = label.querySelector('.download-form__file-placeholder');
+          if (placeholder) {
+            placeholder.textContent = fileName;
+            placeholder.classList.remove('download-form__file-placeholder');
+            placeholder.classList.add('download-form__file-name');
+          }
+        }
+      });
+    });
+    // Delete functionality
+    document.querySelectorAll('.download-form__delete-btn').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const item = this.closest('.download-form__item');
+        const fileInput = item.querySelector('.download-form__file-input');
+        const label = item.querySelector('.download-form__file-label');
+        if (fileInput) {
+          fileInput.value = '';
+        }
+        const fileName = label.querySelector('.download-form__file-name');
+        if (fileName) {
+          fileName.textContent = 'ファイル名';
+          fileName.classList.remove('download-form__file-name');
+          fileName.classList.add('download-form__file-placeholder');
+        }
+      });
+    });
+    // Category select change
+    const categorySelect = document.querySelector('.download-form__select');
+    if (categorySelect) {
+      categorySelect.addEventListener('change', function () {
+        console.log('Category changed to:', this.value);
+        // Add logic to load different file lists based on category
+      });
+    }
+  </script>
+{% endblock %}
