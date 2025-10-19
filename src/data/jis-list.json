@@ -57,14 +57,14 @@
   ],
   "tableHeaders": [
     {
-      "label": "",
+      "label": "ID",
       "size": "xsmall",
-      "sortable": false
+      "sortable": true
     },
     {
       "label": "認証番号",
       "size": "medium",
-      "sortable": false
+      "sortable": true
     },
     {
       "label": "実名等",

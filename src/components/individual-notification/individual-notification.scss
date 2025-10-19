@@ -1,0 +1,59 @@
+@use "../../scss/abstracts/mixins" as *;
+@use "../../scss/abstracts/variables" as *;
+
+.individual-notification {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+
+    .form-label {
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+  }
+
+  &__select-wrapper {
+    max-width: 300px;
+  }
+
+  &__select {
+    min-width: 250px;
+  }
+
+  &__select-btn,
+  &__delete-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  &__editor {
+    margin-top: var(--spacing-xl);
+  }
+
+  &__textarea {
+    width: 100%;
+    height: 300px;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+  }
+
+  // Footer
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+    padding-top: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+  }
+}

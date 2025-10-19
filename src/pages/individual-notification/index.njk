@@ -1,0 +1,10 @@
+{% extends "layouts/base.njk" %}
+{% from "components/individual-notification/individual-notification.njk" import individualNotification %}
+{% block title %}個別お知らせ機能 - {{ site.title }}
+{% endblock %}
+{% block bodyClass %}admin-layout{% endblock %}
+{% block content %}
+  <div class="admin-content">
+    {{ individualNotification() }}
+  </div>
+{% endblock %}

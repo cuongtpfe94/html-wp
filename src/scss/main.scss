@@ -22,6 +22,8 @@
 @use "../components/classification/classification";
 @use "../components/jis-list/jis-list";
 @use "../components/download-form/download-form";
+@use "../components/individual-notification/individual-notification";
+@use "../components/recruitment-information/recruitment-information";
 
 // Layout
 @use "layout/grid";

@@ -1,0 +1,10 @@
+{% extends "layouts/base.njk" %}
+{% from "components/recruitment-information/recruitment-information.njk" import recruitmentInformation %}
+{% block title %}採用情報 - {{ site.title }}
+{% endblock %}
+{% block bodyClass %}admin-layout{% endblock %}
+{% block content %}
+  <div class="admin-content">
+    {{ recruitmentInformation() }}
+  </div>
+{% endblock %}

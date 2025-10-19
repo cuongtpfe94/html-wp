@@ -1,0 +1,51 @@
+{% macro recruitmentInformation(data) %}
+  <div
+    class="recruitment-information app-form">
+    {# Header #}
+    <div class="recruitment-information__header">
+      <h1 class="recruitment-information__title">採用情報（新卒採用）</h1>
+      <div class="recruitment-information__actions">
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">下書き保存</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">プレビュー</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">公開</span>
+        </button>
+      </div>
+    </div>
+    <div class="recruitment-information__content">
+      <div class="recruitment-information__category">
+        <label class="form-label">管理画面イメージ</label>
+        <div class="form-select-wrapper recruitment-information__select-wrapper">
+          <select class="form-select recruitment-information__select">
+            <option value="1" selected="selected">リスト分類</option>
+            <option value="2">リスト分類</option>
+            <option value="3">リスト分類</option>
+          </select>
+        </div>
+      </div>
+      <div class="recruitment-information__editor">
+        <textarea class="recruitment-information__textarea" placeholder="テキスト入力"></textarea>
+      </div>
+    </div>
+    {# Footer #}
+    <div class="recruitment-information__footer">
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">下書き保存</span>
+      </button>
+      |
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">プレビュー</span>
+      </button>
+      |
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">公開</span>
+      </button>
+    </div>
+  </div>
+{% endmacro %}

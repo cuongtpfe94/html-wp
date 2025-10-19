@@ -1,0 +1,51 @@
+{% macro individualNotification(data) %}
+  <div
+    class="individual-notification app-form">
+    {# Header #}
+    <div class="individual-notification__header">
+      <h1 class="individual-notification__title">個別お知らせ機能</h1>
+      <div class="individual-notification__actions">
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">下書き保存</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">プレビュー</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">公開</span>
+        </button>
+      </div>
+    </div>
+    <div class="individual-notification__content">
+      <div class="individual-notification__category">
+        <label class="form-label">反映先ページ選択</label>
+        <div class="form-select-wrapper individual-notification__select-wrapper">
+          <select class="form-select individual-notification__select">
+            <option value="1" selected="selected">リスト分類</option>
+            <option value="2">リスト分類</option>
+            <option value="3">リスト分類</option>
+          </select>
+        </div>
+      </div>
+      <div class="individual-notification__editor">
+        <textarea class="individual-notification__textarea" placeholder="テキスト入力"></textarea>
+      </div>
+    </div>
+    {# Footer #}
+    <div class="individual-notification__footer">
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">下書き保存</span>
+      </button>
+      |
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">プレビュー</span>
+      </button>
+      |
+      <button class="app-button app-button--ghost app-button--small">
+        <span class="text-default">公開</span>
+      </button>
+    </div>
+  </div>
+{% endmacro %}
