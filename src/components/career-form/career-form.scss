@@ -1,0 +1,330 @@
+@use "../../scss/abstracts/mixins" as *;
+@use "../../scss/abstracts/variables" as *;
+
+.career-form {
+  // Header
+  &__header {
+    @include flex-between;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__actions {
+    @include flex-between;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+  }
+
+  &__tabs-section {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    max-width: 760px;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  &__tabs-list {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  &__tab-item {
+    @include flex-between;
+    gap: var(--spacing-sm);
+    padding: 0;
+    border-bottom: 1px dashed var(--border-color);
+    height: 40px;
+    margin: 0 auto;
+    width: calc(100% - 60px);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__tab-radio {
+    flex: 1;
+    @include flex-center;
+    gap: var(--spacing-sm);
+    justify-content: flex-start;
+    height: 100%;
+    padding: 0 var(--spacing-sm);
+    background-color: #fff;
+  }
+
+  &__tab-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    flex: 1;
+  }
+
+  &__new-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: var(--spacing-xs);
+  }
+
+  &__new-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  &__menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    color: var(--text-secondary);
+    font-size: 18px;
+    @include transition;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &__add-tab-btn {
+    margin-top: auto;
+  }
+
+  &__details-table-header {
+    @include flex-between;
+    color: var(--bg-primary);
+    font-weight: 600;
+    max-width: 440px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  &__details-section {
+    background-color: var(--border-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-xl);
+  }
+
+  &__details-header {
+    @include flex-between;
+    margin-bottom: var(--spacing-xs);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  &__details-label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--bg-primary);    
+  }
+
+  &__details-input {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  &__details-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  &__icon-btn {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-secondary);
+    font-size: var(--font-size-md);
+    @include transition;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  // Table
+  &__table-wrapper {
+    overflow-x: auto;
+    margin-bottom: var(--spacing-md);
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+  }
+
+  &__table-th {
+    background-color: #f5f5f5;
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+
+    &--label {
+      width: 200px;
+    }
+
+    &--content {
+      width: auto;
+    }
+
+    &--actions {
+      width: 60px;
+    }
+  }
+
+  &__table-row {
+    border-bottom: 1px solid var(--border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__table-td {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+
+    &--actions {
+      text-align: center;
+      vertical-align: middle;
+      width: 50px;
+    }
+
+    &-label {
+      font-size: var(--font-size-sm);
+    }
+
+    &-content {
+      font-size: var(--font-size-sm);
+      white-space: pre-line;
+    }
+  }
+
+  &__drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: move;
+    color: var(--text-secondary);
+    margin-right: var(--spacing-xs);
+    user-select: none;
+    font-size: 16px;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    outline: none;
+    @include transition(border-color);
+
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__delete-row-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-size: var(--font-size-md);
+    @include transition;
+  }
+
+  &__add-row-btn {
+    padding: var(--spacing-sm);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    @include flex-center;
+    cursor: pointer;
+    @include transition;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  &__add-icon {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding-bottom: 4px;
+  }
+
+  // Footer
+  &__footer {
+    padding: var(--spacing-lg) 0;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+  }
+
+  input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    background-color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+
+    &:checked {
+      background-color: #fff;
+      border-color: #000000;
+    }
+
+    &:checked::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #000;
+    }
+  }
+}
+

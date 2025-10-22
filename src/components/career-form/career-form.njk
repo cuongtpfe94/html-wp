@@ -1,0 +1,105 @@
+{# Career Form Component #}
+{% macro careerForm(data) %}
+  <div
+    class="career-form app-form">
+    {# Header #}
+    <div class="career-form__header">
+      <h1 class="career-form__title">{{ data.title }}</h1>
+      <div class="career-form__actions">
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">下書き保存</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">プレビュー</span>
+        </button>
+        |
+        <button class="app-button app-button--ghost app-button--small">
+          <span class="text-default">公開</span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="career-form__content">
+      {# Job Listing Tabs Section #}
+      <div class="career-form__tabs-section">
+        <div class="career-form__tabs-list" id="job-tabs-list">
+          {% for job in data.jobListings %}
+            <div class="career-form__tab-item" data-job-id="{{ job.id }}">
+              <div class="career-form__tab-radio">
+                <input type="radio" name="job-listing" value="{{ job.id }}" id="job-{{ job.id }}" {% if job.selected %} checked {% endif %}>
+                  <label for="job-{{ job.id }}" class="career-form__tab-label">
+                    {{ job.title }}
+                  </label>
+                </div>
+                <div class="career-form__new-checkbox">
+                  <input type="checkbox" class="checkbox" id="new-{{ job.id }}">
+                    <label for="new-{{ job.id }}" class="career-form__new-label">NEW</label>
+                  </div>
+                  <button type="button" class="career-form__menu-btn" title="メニュー">☰</button>
+                </div>
+              {% endfor %}
+            </div>
+            <button type="button" class="app-button app-button--dark app-button--large career-form__add-tab-btn">
+              新規表を追加
+            </button>
+          </div>
+          {# Job Details Table Section #}
+          <div class="career-form__details-section">
+            <div class="career-form__details-header">
+              <label class="career-form__details-label">
+                タイトル
+              </label>
+              <div class="career-form__details-actions">
+                <button type="button" class="career-form__icon-btn" title="コピー">📋</button>
+                <button type="button" class="career-form__icon-btn" title="削除">🗑️</button>
+              </div>
+            </div>
+            <input type="text" class="career-form__details-input career-form__input career-form__input--label" value="{{ data.selectedJob.title }}" placeholder="タイトルを入力">
+              <div class="career-form__details-table-header">
+                <span>項目</span>
+                <span>内容</span>
+              </div>
+              <div class="career-form__table-wrapper">
+                <table class="career-form__table" id="job-details-table">
+                  <tbody>
+                    {% for row in data.selectedJob.details %}
+                      <tr class="career-form__table-row">
+                        <td class="career-form__table-td">
+                          <div class="career-form__drag-handle">☰</div>
+                        </td>
+                        <td class="career-form__table-td">
+                          <span class="career-form__table-td-label">{{ row.label }}</span>
+                        </td>
+                        <td class="career-form__table-td">
+                          <p class="career-form__table-td-content">{{ row.content }}</p>
+                        </td>
+                        <td class="career-form__table-td career-form__table-td--actions">
+                          <button type="button" class="career-form__delete-row-btn" title="削除">🗑️</button>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <button type="button" class="career-form__add-row-btn">
+                <span class="career-form__add-icon">+</span>
+              </button>
+            </div>
+          </div>
+          {# Footer #}
+          <div class="career-form__footer">
+            <button class="app-button app-button--ghost app-button--small">
+              <span class="text-default">下書き保存</span>
+            </button>
+            |
+            <button class="app-button app-button--ghost app-button--small">
+              <span class="text-default">プレビュー</span>
+            </button>
+            |
+            <button class="app-button app-button--ghost app-button--small">
+              <span class="text-default">公開</span>
+            </button>
+          </div>
+        </div>
+      {% endmacro %}

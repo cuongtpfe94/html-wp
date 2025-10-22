@@ -1,0 +1,140 @@
+{% extends "layouts/base.njk" %}
+{% from "components/career-form/career-form.njk" import careerForm %}
+{% block title %}採用情報(キャリア採用) - {{ site.title }}
+{% endblock %}
+{% block bodyClass %}admin-layout{% endblock %}
+{% block content %}
+  <div class="admin-content">
+    {{ careerForm(careerFormData) }}
+  </div>
+{% endblock %}
+{% block scripts %}
+  <script>
+    // Job listing selection
+    document.querySelectorAll('input[name="job-listing"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        const jobId = this.value;
+        const jobTitle = this
+          .nextElementSibling
+          .textContent
+          .trim();
+        document.getElementById('job-details-title').textContent = jobTitle;
+        // Load job details for selected job (in real app, fetch from API)
+        console.log('Selected job:', jobId);
+      });
+    });
+    // Add new job listing
+    const addTabBtn = document.querySelector('.career-form__add-tab-btn');
+    if (addTabBtn) {
+      addTabBtn.addEventListener('click', function () {
+        const tabsList = document.getElementById('job-tabs-list');
+        const newId = Date.now();
+        const newTab = document.createElement('div');
+        newTab.className = 'career-form__tab-item';
+        newTab.dataset.jobId = newId;
+        newTab.innerHTML = `
+        <div class="career-form__tab-drag">
+          <span class="career-form__drag-icon">☰</span>
+        </div>
+        <div class="career-form__tab-radio">
+          <input type="radio" name="job-listing" value="${newId}" id="job-${newId}">
+          <label for="job-${newId}" class="career-form__tab-label">
+            新しい表
+          </label>
+        </div>
+        <div class="career-form__new-checkbox">
+          <input type="checkbox" class="checkbox" id="new-${newId}">
+          <label for="new-${newId}" class="career-form__new-label">NEW</label>
+        </div>
+        <button type="button" class="career-form__menu-btn" title="メニュー">☰</button>
+      `;
+        tabsList.appendChild(newTab);
+      });
+    }
+    // Add new row to table
+    const addRowBtn = document.querySelector('.career-form__add-row-btn');
+    if (addRowBtn) {
+      addRowBtn.addEventListener('click', function () {
+        const tableBody = document.querySelector('.career-form__table tbody');
+        const newRow = document.createElement('tr');
+        newRow.className = 'career-form__table-row';
+        newRow.innerHTML = `
+        <td class="career-form__table-td">
+          <div class="career-form__drag-handle">☰</div>
+          <input type="text" class="career-form__input career-form__input--label" placeholder="項目を入力">
+        </td>
+        <td class="career-form__table-td">
+          <textarea class="career-form__textarea" rows="3" placeholder="内容を入力"></textarea>
+        </td>
+        <td class="career-form__table-td career-form__table-td--actions">
+          <button type="button" class="career-form__delete-row-btn" title="削除">🗑️</button>
+        </td>
+      `;
+        tableBody.appendChild(newRow);
+        // Add delete functionality to new row
+        const deleteBtn = newRow.querySelector('.career-form__delete-row-btn');
+        deleteBtn.addEventListener('click', function () {
+          if (confirm('この行を削除しますか？')) {
+            newRow.remove();
+          }
+        });
+      });
+    }
+    // Delete row functionality
+    document.querySelectorAll('.career-form__delete-row-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        if (confirm('この行を削除しますか？')) {
+          this.closest('tr').remove();
+        }
+      });
+    });
+    // Delete job listing
+    document.querySelectorAll('.career-form__icon-btn[title="削除"]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        if (confirm('この求人を削除しますか？')) {
+          console.log('Delete job listing');
+          // Delete logic here
+        }
+      });
+    });
+    // Copy job listing
+    document.querySelectorAll('.career-form__icon-btn[title="コピー"]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        console.log('Copy job listing');
+        // Copy logic here
+      });
+    });
+    // Drag and drop for job listings (simplified)
+    let draggedElement = null;
+    document.querySelectorAll('.career-form__tab-drag').forEach(handle => {
+      handle.addEventListener('dragstart', function (e) {
+        draggedElement = this.closest('.career-form__tab-item');
+        e.dataTransfer.effectAllowed = 'move';
+      });
+    });
+    const tabsList = document.getElementById('job-tabs-list');
+    if (tabsList) {
+      tabsList.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(tabsList, e.clientY);
+        if (afterElement == null) {
+          tabsList.appendChild(draggedElement);
+        } else {
+          tabsList.insertBefore(draggedElement, afterElement);
+        }
+      });
+    }
+    function getDragAfterElement(container, y) {
+      const draggableElements = [... container.querySelectorAll('.career-form__tab-item:not(.dragging)')];
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return {offset: offset, element: child};
+        } else {
+          return closest;
+        }
+      }, {offset: Number.NEGATIVE_INFINITY}).element;
+    }
+  </script>
+{% endblock %}

@@ -46,6 +46,7 @@ gulp.task("nunjucks", () => {
           standardFormData: require("./src/data/standard-form.json"),
           jisListData: require("./src/data/jis-list.json"),
           downloadFormData: require("./src/data/download-form.json"),
+          careerFormData: require("./src/data/career-form.json"),
         },
       })
     )
